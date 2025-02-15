@@ -1,0 +1,97 @@
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm show values bitnami/minio > values-ori.yaml
+
+
+kubectl create ns minio
+
+helm delete s3 -n minio
+
+helm install s3 -f values.yaml \
+   --set auth.rootUser=admin,auth.rootPassword="D014M1n@x102024#",persistence.size=1Ti \
+   --set clusterDomain=doi.local \
+   --set persistence.storageClass=ceph-block2-minio \
+   --set volumePermissions.enabled=true \
+   --set tls.existingSecret="cert-s3.immi.gov.bt" \
+   -n minio bitnami/minio
+
+   --set minio.persistence.existingClaim="s3-minio" \
+
+
+helm upgrade s3 -f values.yaml \
+   --set auth.rootUser=admin,auth.rootPassword="D014M1n@x102024#",persistence.size=1Ti \
+   --set clusterDomain=doi.local \
+   --set persistence.storageClass=ceph-block2-minio \
+   --set volumePermissions.enabled=true \
+   --set tls.existingSecret="cert-s3.immi.gov.bt" \
+   --set minio.persistence.existingClaim="s3-minio" \
+   -n minio bitnami/minio
+
+
+
+
+mc alias set minio-doi https://s3.immi.gov.bt 9Qt9DYGkpOsrhuhAXnfh p5DhQMkUFcFGt4b6L7poDUrtVIztibSZINKdDkrm
+
+
+# DEV USER
+mc alias set minio-doi https://s3.immi.gov.bt TI9FT5SPQJG8EZDS81QA TjxloOg1sCS8dRAhzOy9a2PrJc2mFSCnTK23z12e
+
+
+# PROD USER
+9Qt9DYGkpOsrhuhAXnfh
+p5DhQMkUFcFGt4b6L7poDUrtVIztibSZINKdDkrm
+
+mc rm --non-current minio/eralis/etest --versions --recursive --force
+mc ls minio-doi/dev-doi
+
+mc mv --recursive minio-doi/dev-doi/05-28-2024-20-39-09_files_list/* minio-doi/dev-doi/
+
+hana
+ZmWmChzgI2T@ic9t
+
+tshewang
+y@0NTFu4$nahACNj
+
+NAME: s3
+LAST DEPLOYED: Tue May 28 20:51:19 2024
+NAMESPACE: minio
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: minio
+CHART VERSION: 14.1.7
+APP VERSION: 2024.4.6
+
+** Please be patient while the chart is being deployed **
+
+MinIO&reg; can be accessed via port  on the following DNS name from within your cluster:
+
+   s3-minio.minio.svc.doi.local
+
+To get your credentials run:
+
+   export ROOT_USER=$(kubectl get secret --namespace minio s3-minio -o jsonpath="{.data.root-user}" | base64 -d)
+   export ROOT_PASSWORD=$(kubectl get secret --namespace minio s3-minio -o jsonpath="{.data.root-password}" | base64 -d)
+
+To connect to your MinIO&reg; server using a client:
+
+- Run a MinIO&reg; Client pod and append the desired command (e.g. 'admin info'):
+
+   kubectl run --namespace minio s3-minio-client \
+     --rm --tty -i --restart='Never' \
+     --env MINIO_SERVER_ROOT_USER=$ROOT_USER \
+     --env MINIO_SERVER_ROOT_PASSWORD=$ROOT_PASSWORD \
+     --env MINIO_SERVER_HOST=s3-minio \
+     --image docker.io/bitnami/minio-client:2024.3.30-debian-12-r2 -- admin info minio
+
+To access the MinIO&reg; web UI:
+
+- Get the MinIO&reg; URL:
+
+   echo "MinIO&reg; web URL: http://127.0.0.1:9001/minio"
+   kubectl port-forward --namespace minio svc/s3-minio 9001:9001
+
+WARNING: There are "resources" sections in the chart not set. Using "resourcesPreset" is not recommended for production. For production installations, please set the following values according to your workload needs:
+  - resources
+  - volumePermissions.resources
++info https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/

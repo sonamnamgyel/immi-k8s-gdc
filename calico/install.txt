@@ -1,0 +1,3 @@
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.3/manifests/tigera-operator.yaml
+
+kubectl create -f custom-resources.yaml

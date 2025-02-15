@@ -1,0 +1,5 @@
+k apply -f secret.yaml
+
+
+cat config.user.inc.php | base64
+PD9waHAKJGNmZ1snVGhlbWVNYW5hZ2VyJ10gPSBmYWxzZTsKJGNmZ1snVGhlbWVEZWZhdWx0J109ICdtZXRybyc7Cj8+

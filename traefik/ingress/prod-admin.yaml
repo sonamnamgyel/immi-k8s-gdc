@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prod-admin
+  namespace: prod
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`immi.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: admin-portal
+          port: 3000
+    # - match: Host(`support.doi.gov.bt`)
+    #   kind: Rule
+    #   services:
+    #     - name: admin-support
+    #       port: 80
+  tls:
+    secretName: cert-prod-doi.gov.bt
+  

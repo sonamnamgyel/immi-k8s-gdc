@@ -1,0 +1,45 @@
+helm repo add harbor https://helm.goharbor.io
+helm fetch harbor/harbor --untar
+
+
+
+#
+# Before install harbor
+
+kubectl create ns harbor
+
+
+#
+# WITH INGRESS
+#
+
+helm install registry harbor/harbor \
+--set expose.type=clusterIP \
+--set expose.tls.auto.commonName=registry.doi.gov.bt \
+--set externalURL=https://registry.doi.gov.bt \
+--set persistence.persistentVolumeClaim.registry.size=30Gi \
+--set persistence.persistentVolumeClaim.chartmuseum.size=5Gi \
+--set persistence.persistentVolumeClaim.database.size=5Gi \
+--set notary.enabled=false \
+--set persistence.persistentVolumeClaim.registry.accessMode=ReadWriteOnce \
+--set persistence.persistentVolumeClaim.chartmuseum.accessMode=ReadWriteOnce \
+--set persistence.persistentVolumeClaim.jobservice.accessMode=ReadWriteOnce \
+--set expose.tls.secret.secretName=cert-registry.doi.gov.bt \
+--set harborAdminPassword=#Do1H@rb0r@2024$ \
+-n harbor
+
+
+helm upgrade registry harbor/harbor \
+--set expose.type=clusterIP \
+--set expose.tls.auto.commonName=registry.doi.gov.bt \
+--set externalURL=https://registry.doi.gov.bt \
+--set persistence.persistentVolumeClaim.registry.size=30Gi \
+--set persistence.persistentVolumeClaim.chartmuseum.size=5Gi \
+--set persistence.persistentVolumeClaim.database.size=5Gi \
+--set notary.enabled=false \
+--set persistence.persistentVolumeClaim.registry.accessMode=ReadWriteOnce \
+--set persistence.persistentVolumeClaim.chartmuseum.accessMode=ReadWriteOnce \
+--set persistence.persistentVolumeClaim.jobservice.accessMode=ReadWriteOnce \
+--set expose.tls.secret.secretName=cert-registry.doi.gov.bt \
+--set harborAdminPassword=#Do1H@rb0r@2024$ \
+-n harbor

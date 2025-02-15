@@ -1,0 +1,33 @@
+# k apply -f sa.yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: delete-all-jobs
+  namespace: ops
+spec:
+  concurrencyPolicy: Allow
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: sa-cronjob-runner
+          containers:
+          - command:
+            - sh
+            - -c
+            - kubectl delete jobs --all --all-namespaces
+            image: bitnami/kubectl
+            imagePullPolicy: Always
+            name: kubectl-runner
+            resources: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+          dnsPolicy: ClusterFirst
+          restartPolicy: Never
+          schedulerName: default-scheduler
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
+  schedule: '0 19 * * *'
+  successfulJobsHistoryLimit: 1
+  suspend: false

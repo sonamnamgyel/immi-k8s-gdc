@@ -1,0 +1,645 @@
+root@kw1:/etc/cron.hourly# history
+ 1067  awk '/^ *deny *=/\
+ 1068  ||/^ *fail_interval *=/\
+ 1069  ||/^ *unlock_time *=/' /etc/security/faillock.conf
+ 1070  vi /etc/security/faillock.conf
+ 1071  awk '/^ *deny *=/\
+ 1072  ||/^ *fail_interval *=/\
+ 1073  ||/^ *unlock_time *=/' /etc/security/faillock.conf
+ 1074  awk '/^ *deny *=/\
+ 1075  ||/^ *fail_interval *=/\
+ 1076  ||/^ *unlock_time *=/' /etc/security/faillock.conf
+ 1077  vi /etc/security/faillock.conf
+ 1078  vi /etc/pam.d/common-auth
+ 1079  useradd dzangpo
+ 1080  passwd dzangpo
+ 1081  deluser dzangpo --remove-home
+ 1082  cd
+ 1083  ls
+ 1084  vi /etc/pam.d/common-auth
+ 1085  faillock
+ 1086  ls
+ 1087  vi /etc/pam.d/common-auth
+ 1088  vi /etc/pam.d/common-account
+ 1089  faillock
+ 1090  vi /etc/pam.d/common-auth
+ 1091  faillock
+ 1092  vi /etc/security/faillock.conf
+ 1093  vi /etc/pam.d/common-auth
+ 1094  faillock
+ 1095  vi /etc/ssh/sshd_config
+ 1096  systemctl restart sshd
+ 1097  systemctl restart ssh
+ 1098  faillock
+ 1099  vi /etc/pam.d/system-auth
+ 1100  cd /etc/pam.d/system-auth
+ 1101  cd /etc/pam.d
+ 1102  ls
+ 1103  vi common-auth
+ 1104  vi common-account
+ 1105  vi login
+ 1106  vi /etc/login.defs
+ 1107  vi common-auth
+ 1108  faillokc
+ 1109  faillock
+ 1110  vi common-auth
+ 1111  vi common-account
+ 1112  passwd sysadmin
+ 1113  vi /etc/security/pwquality.conf
+ 1114  vi /etc/pam.d/common-password
+ 1115  passwd sysadmin
+ 1116  vi /etc/pam.d/common-password
+ 1117  faillokc
+ 1118  faillock
+ 1119  passwd sysadmin
+ 1120  /usr/bin/apt-cache policy
+ 1121  cd
+ 1122  apt-cache policy
+ 1123  nano /etc/apt/sources.list
+ 1124  apt upgrade
+ 1125  apt update
+ 1126  apt upgrade
+ 1127  apt autoremove
+ 1128  apt upgrade
+ 1129  apt upgrade python-apt-common
+ 1130  apt upgrade python3-apt update-notifier-common
+ 1131  apt upgrade
+ 1132  grub-mkpasswd-pbkdf2
+ 1133  grep "^set superusers" /boot/grub/grub.cfg
+ 1134  grub-mkpasswd-pbkdf2
+ 1135  vi /etc/grub.d/
+ 1136  update-grub
+ 1137  vi /etc/grub.d/00_header
+ 1138  vi /etc/default/grub
+ 1139  /usr/bin/lsof -i -P -n | /bin/grep -v "(ESTABLISHED)"
+ 1140  ufw allow out on all
+ 1141  /bin/ss -4tuln; /usr/sbin/ufw status verbose
+ 1142  ufw allow 53/tcp
+ 1143  /bin/ss -4tuln; /usr/sbin/ufw status verbose
+ 1144  ufw allow 443/tcp
+ 1145  ufw allow no 9418/tcp
+ 1146  ufw no allow in 9418/tcp
+ 1147  ufw delete allow 9418/tcp
+ 1148  /bin/ss -4tuln; /usr/sbin/ufw status verbose
+ 1149  ufw delete allow 8834/tcp
+ 1150  /bin/ss -4tuln; /usr/sbin/ufw status verbose
+ 1151  ufw delete allow 443
+ 1152  /bin/ss -4tuln; /usr/sbin/ufw status verbose
+ 1153  ufw delete allow out 443/tcp
+ 1154  ufw allow out 443/tcp
+ 1155  /bin/ss -4tuln; /usr/sbin/ufw status verbose
+ 1156  ufw delete allow out 443
+ 1157  ufw delete allow out 53/tcp
+ 1158  ufw delete allow out 53
+ 1159  ufw allow out 53/tcp
+ 1160  /bin/ss -4tuln; /usr/sbin/ufw status verbose
+ 1161  ufw reload
+ 1162  /usr/bin/grep -P '^\s*(SystemMaxUse|SystemKeepFree|RuntimeMaxUse|RuntimeKeepFree|MaxFileSec)\s*=' /etc/systemd/journald.conf
+ 1163  clear
+ 1164  vi /usr/lib/tmpfiles.d/systemd.conf
+ 1165  vi /etc/tmpfiles.d/systemd.conf
+ 1166  man 5 tmpfiles.d
+ 1167  vi /etc/tmpfiles.d/systemd.conf
+ 1168  vi /etc/ssh/sshd_config
+ 1169  dpkg --configure -a
+ 1170  apt —fix-broken install
+ 1171  apt --fix-broken install
+ 1172  apt autoclean
+ 1173  apt autoremove
+ 1174  clear
+ 1175  apt-get update
+ 1176  apt-get upgrade
+ 1177  exit
+ 1178  cd
+ 1179  cd /home/gdcadmin/
+ 1180  ls
+ 1181  cd ..
+ 1182  ls
+ 1183  deluser sysadmin --remove-home
+ 1184  reboot
+ 1185  ls
+ 1186  pwd
+ 1187  cd
+ 1188  ls
+ 1189  ...
+ 1190  /bin/findmnt /tmp -n
+ 1191  vi /etc/fstab
+ 1192  /bin/findmnt /tmp -n
+ 1193  vi /etc/fstab
+ 1194  /bin/findmnt
+ 1195  cat /etc/fstab
+ 1196  vi /etc/fstab
+ 1197  mount -o remount
+ 1198  mount -o remount,noexec,nosuid,nodev /tmp
+ 1199  /bin/findmnt
+ 1200  mount -o remount,noexec,nosuid,nodev /dev/shm
+ 1201  /bin/findmnt
+ 1202  mount -o rw,noexec,nosuid,nodev,bind /tmp/ /var/tmp/
+ 1203  /bin/findmnt
+ 1204  /bin/findmnt /tmp -n
+ 1205  vi /etc/fstab
+ 1206  clear
+ 1207  /sbin/modprobe -n -v cramfs | /bin/grep -E '(cramfs|install)'
+ 1208  vi /etc/modprobe.d/cramfs.conf
+ 1209  cd /etc/modprobe.d/
+ 1210  ls
+ 1211  vi blacklist.conf
+ 1212  vi usb-storage.conf
+ 1213  vi dccp.conf
+ 1214  vi rds.conf
+ 1215  vi squashfs.conf
+ 1216  vi sctp.conf
+ 1217  vi tipc.conf
+ 1218  ls
+ 1219  vi sctp.conf
+ 1220  modprobe -r cramfs
+ 1221  /sbin/modprobe -n -v cramfs | /bin/grep -E '(cramfs|install)'
+ 1222  /sbin/modprobe -n -v udf | /bin/grep -E '(cramfs|install)'
+ 1223  ls
+ 1224  cd ..
+ 1225  ls
+ 1226  cd
+ 1227  ls
+ 1228  clear
+ 1229  vi /etc/modprobe.d/
+ 1230  modprobe -r usb-storage
+ 1231  /bin/grep -r aide /etc/cron.* /etc/crontab
+ 1232  apt purge apport
+ 1233  /******* dont_echo_cmd: YES expect:(disabled|masked|static)
+ 1234  clear
+ 1235  vi /etc/default
+ 1236  ls
+ 1237  cd ..
+ 1238  ls
+ 1239  cd ..
+ 1240  ls
+ 1241  clear
+ 1242  apparmor_status | grep profiles
+ 1243  aa-complain /etc/apparmor.d/*
+ 1244  apparmor_status | grep profiles
+ 1245  aa-enforce /etc/apparmor.d/*
+ 1246  apparmor_status | grep profiles
+ 1247  sudo chmod 644 /etc/issue
+ 1248  ls -la /etc/issue
+ 1249  ls -la /etc/issue.net
+ 1250  chmod 644 /etc/issue.net
+ 1251  vi /etc/pam.d/login
+ 1252  vi /etc/pam.d/common-session
+ 1253  vi /etc/pam.d/login
+ 1254  vi /etc/sysctl.d/
+ 1255  /sbin/sysctl net.ipv4.conf.all.secure_redirects
+ 1256  vi /etc/sysctl.d/
+ 1257  /sbin/sysctl net.ipv4.conf.all.secure_redirects
+ 1258  clear
+ 1259  /sbin/sysctl net.ipv4.conf.all.secure_redirects
+ 1260  vi /etc/sysctl.d/
+ 1261  vi /etc/sysctl.conf
+ 1262  /sbin/sysctl net.ipv4.conf.all.secure_redirects
+ 1263  sysctl -w net.ipv4.conf.all.secure_redirects=0
+ 1264  /sbin/sysctl net.ipv4.conf.all.secure_redirects
+ 1265  sysctl -w net.ipv4.conf.default.secure_redirects=0
+ 1266  /sbin/sysctl net.ipv4.conf.all.secure_redirects
+ 1267  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1268  ls -la /sbin/auditctl
+ 1269  chomd -R 755 /sbin/auditctl
+ 1270  chmod -R 755 /sbin/auditctl
+ 1271  ls -la /sbin/auditctl
+ 1272  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$'
+ 1273  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,6][0,1,4,5])h*$'
+ 1274  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-6][0,1,4,6][0,1,4,5])h*$'
+ 1275  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-2][0,1,4,6][0,1,4,5])h*$'
+ 1276  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,6][0,1,4,5])h*$'
+ 1277  chmod go-rwx /sbin/auditctl
+ 1278  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,6][0,1,4,5])h*$'
+ 1279  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -P -- '^h*H+h+([0-7][0,1,4,6][0,1,4,5])h*$'
+ 1280  chmod -R 755 /sbin/auditctl
+ 1281  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -P -- '^h*H+h+([0-7][0,1,4,6][0,1,4,5])h*$'
+ 1282  usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1283  usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -P -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1284  usr/bin/stat -Lc "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1285  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^\h*\H+\h+([0-7][0,1,4,5][0,1,4,5])\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1286  ip a s
+ 1287  stat -c "%n %U" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -Pv -- '^\h*\H+\h+root\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1288  cat /etc/aide/aide.conf
+ 1289  grep -P -- '(\/sbin\/(audit|au)\H*\b)' /etc/aide/aide.conf
+ 1290  grep -P -- '(\/sbin\/(audit|au)\H*\b)' /etc/aide/aide.conf | /usr/bin/awk '{print} END {if (NR != 0) print "pass" ; else print "fail"}
+ 1291  ;
+ 1292  grep -P -- '(\/sbin\/(audit|au)\H*\b)' /etc/aide/aide.conf | /usr/bin/awk '{print} END {if (NR != 0) print "pass" ; else print "fail"}'
+ 1293  systemctl show --property=ForwardToSyslog
+ 1294  vi /etc/systemd/journald.conf
+ 1295  systemctl show --property=ForwardToSyslog
+ 1296  systemd-journald service
+ 1297  systemctl restart systemd-journald
+ 1298  systemctl show --property=ForwardToSyslog
+ 1299  vi /etc/systemd/journald.conf
+ 1300  vi /etc/rsyslog.conf
+ 1301  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1302  chmod g+wx,o+rwx /var/log/apt/history.log
+ 1303  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1304  chmod -R 644 /var/log/apt/history.log
+ 1305  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1306  chmod -R 644 /var/log/btmp
+ 1307  chmod -R 644 /var/log/lastlog
+ 1308  chmod -R 644 /var/log/wtmp
+ 1309  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1310  #!/usr/bin/env bash
+ 1311  { echo -e "\n- Start check - logfiles have appropriate permissions and ownership"; output=""; find /var/log -type f | (while read -r fname; do     bname="$(basename "$fname")";     case "$bname" in lastlog | lastlog.* | wtmp | wtmp.* | btmp | btmp.*)          if ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6][0,4]\h*$'; then           	output="$output\n- File: \"$fname\" mode: \"$(stat -Lc "%a" "$fname")\"\n";        fi; 		if ! stat -Lc "%U %G" "$fname" | grep -Pq -- '^\h*root\h+(utmp|root)\h*$'; then 		output="$output\n- File: \"$fname\" ownership: \"$(stat -Lc "%U:%G" "$fname")\"\n"; 		fi; 		;;  	secure | auth.log)         if ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,4]0\h*$'; then 		output="$output\n- File: \"$fname\" mode: \"$(stat -Lc "%a" "$fname")\"\n";         fi; 		if ! stat -Lc "%U %G" "$fname" | grep -Pq -- '^\h*(syslog|root)\h+(adm|root)\h*$'; then 		output="$output\n- File: \"$fname\" ownership: \"$(stat -Lc "%U:%G" "$fname")\"\n"; 	fi; 		;; 	SSSD | sssd) 		if ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6]0\h*$'; then 		output="$output\n- File: \"$fname\" mode: \"$(stat -Lc "%a" "$fname")\"\n";         fi; 		if ! stat -Lc "%U %G" "$fname" | grep -Piq -- '^\h*(SSSD|root)\h+(SSSD|root)\h*$'; then 		output="$output\n- File: \"$fname\" ownership: \"$(stat -Lc "%U:%G" "$fname")\"\n"; 		fi; 		;; 	gdm | gdm3) 		if ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6]0\h*$'; then 		output="$output\n- File: \"$fname\" mode: \"$(stat -Lc "%a" "$fname")\"\n";         fi; 		if ! stat -Lc "%U %G" "$fname" | grep -Pq -- '^\h*(root)\h+(gdm3?|root)\h*$'; then 		output="$output\n- File: \"$fname\" ownership: \"$(stat -Lc "%U:%G" "$fname")\"\n"; 		fi ; 		;; 	*.journal)         if ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,4]0\h*$'; then 		output="$output\n- File: \"$fname\" mode: \"$(stat -Lc "%a" "$fname")\"\n";         fi; 		if ! stat -Lc "%U %G" "$fname" | grep -Pq -- '^\h*(root)\h+(systemd-journal|root)\h*$'; then 		output="$output\n- File: \"$fname\" ownership: \"$(stat -Lc "%U:%G" "$fname")\"\n"; 		fi; 		;;  	*)  		if ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,4]0\h*$'; then  		output="$output\n- File: \"$fname\" mode: \"$(stat -Lc "%a" "$fname")\"\n"; 		fi; 	if ! stat -Lc "%U %G" "$fname" | grep -Pq -- '^\h*(syslog|root)\h+(adm|root)\h*$'; then 	output="$output\n- File: \"$fname\" ownership: \"$(stat -Lc "%U:%G" "$fname")\"\n"; 		fi; 		;;  	esac;    done
+ 1312     if [ -z "$output" ]; then 		echo -e "\n- PASS\n- All files in \"/var/log/\" have appropriate permissions and ownership\n";    else
+ 1313        echo -e "\n- FAIL:\n$output"; 	fi; 	echo -e "- End check - logfiles have appropriate permissions and ownership\n" ; 	); }
+ 1314  #!/usr/bin/env bash
+ 1315  { echo -e "\n- Start remediation - logfiles have appropriate permissions and ownership";    find /var/log -type f | while read -r fname; do       bname="$(basename "$fname")";       case "$bname" in lastlog | lastlog.* | wtmp | wtmp.* | btmp | btmp.*)             ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6][0,4]\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-wx "$fname" ;             ! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*root\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(utmp|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname" ; 			;;          secure | auth.log)  			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6][0,4]\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-wx "$fname" ;             ! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*(syslog|root)\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 		! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(adm|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname" ; 			;;          SSSD | sssd)             ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-rwx "$fname"; 			! stat -Lc "%U" "$fname" | grep -Piq -- '^\h*(SSSD|root)\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Piq -- '^\h*(SSSD|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname"; 			;; 		gdm | gdm3) 			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-rwx; 			! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*root\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(gdm3?|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname";             ;;         *.journal) 			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,4]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod u-x,g-wx,o-rwx "$fname"; 			! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*root\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(systemd- journal|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname"; ;;  		*) 			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,4]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod u-x,g-wx,o-rwx "$fname"; 			! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*(syslog|root)\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(adm|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname"; 			;;  		esac; 	done; echo -e "- End remediation - logfiles have appropriate permissions and ownership\n"; }
+ 1316  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1317  chmod u-x,g-wx,o-rwx /var/log/btmp
+ 1318  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1319  chmod u-x,g-wx,o-rwx /var/log/lastlog
+ 1320  chmod u-x,g-wx,o-rwx /var/log/wtmp
+ 1321  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1322  /bin/grep -s -E '^[[:space:]]*Defaults[[:space:]]+([^#]+,[[:space:]]*)?use_pty' /etc/sudoers /etc/sudoers.d/* | /usr/bin/awk '{print} END {if (NR != 0) print "pass" ; else print "fail"}'
+ 1323  /bin/grep -s -E '^[[:space:]]*Defaults[[:space:]]+([^#]+,[[:space:]]*)?use_pty' /etc/sudoers /etc/sudoers.d/*
+ 1324  bin/grep -s -E '^[[:space:]]*Defaults[[:space:]]+([^#]+,[[:space:]]*)?use_pty' /etc/sudoers /etc/sudoers.d/* | /usr/bin/awk '{print} END {if (NR != 0) print "pass" ; else print "fail"}'
+ 1325  /bin/grep -s -E '^[[:space:]]*Defaults[[:space:]]+([^#]+,[[:space:]]*)?use_pty' /etc/sudoers /etc/sudoers.d/* | /usr/bin/awk '{print} END {if (NR != 0) print "pass" ; else print "fail"}'
+ 1326  sudo -V | /usr/bin/grep "Authentication timestamp timeout:" | awk '{print $4}'
+ 1327  nano /etc/sudoers
+ 1328  sudo -v
+ 1329  ls
+ 1330  clear
+ 1331  exit
+ 1332  cd
+ 1333  sudo -V | /usr/bin/grep "Authentication timestamp timeout:" | awk '{print $4}'
+ 1334  grep "Authentication timestamp timeout:
+ 1335  ;
+ 1336  sudo -V
+ 1337  sudo -V | grep Authentication timestamp timeout
+ 1338  sudo -V | grep "Authentication timestamp timeout"
+ 1339  sudo -V | /usr/bin/grep "Authentication timestamp timeout:" | awk '{print $4}'
+ 1340  sugroup=$(grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2)(use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\h+.*)?$' /etc/pam.d/su | awk 'BEGIN { FS = "="} ; { print $2 }'); if [ ! -z $sugroup ]; then grep $sugroup /etc/group | awk 'BEGIN { FS = ":" }; { print $4 }' | /usr/bin/awk'{print} END { if (NR == 0) print "pass"'}; else echo "pass"; fi
+ 1341  sugroup=$(grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2)(use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\h+.*)?$' /etc/pam.d/su | awk 'BEGIN { FS = "="} ; { print $2 }'); if [ ! -z $sugroup ]; then grep $sugroup /etc/group | awk 'BEGIN { FS = ":" }; { print $4 }' | /usr/bin/awk '{print} END {if (NR == 0) print "pass"'}; else echo "pass"; fi
+ 1342  vi /etc/pam.d/su
+ 1343  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\ h+.*)?$' /etc/pam.d/su
+ 1344  vi /etc/pam.d/su
+ 1345  grep '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\ h+.*)?$' /etc/pam.d/su
+ 1346  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\ h+.*)?$' /etc/pam.d/su
+ 1347  grep grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\ h+.*)?$' /etc/pam.d/su
+ 1348  grep auth required pam_wheel.so /etc/pam.d/su
+ 1349  grep grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\ h+.*)?$' /etc/pam.d/su
+ 1350  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)))(\ h+.*)?$' /etc/pam.d/su
+ 1351  clear
+ 1352  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))(\ h+.*)?$' /etc/pam.d/su
+ 1353  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=(\h+.*)?$' /etc/pam.d/su
+ 1354  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)))(\h+.*)?$' /etc/pam.d/su
+ 1355  grep grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\h+.*)?$' /etc/pam.d/su
+ 1356  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=(\h+.*)?$' /etc/pam.d/su
+ 1357  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2) (use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\h+.*)?$' /etc/pam.d/su
+ 1358  grep -Pi '^\h*auth\h+(?:required|requisite)\h+pam_wheel\.so\h+(?:[^#\n\r]+\h+)?((?!\2)(use_uid\b|group=\H+\b))\h+(?:[^#\n\r]+\h+)?((?!\1)(use_uid\b|group=\H+\b))(\h+.*)?$' /etc/pam.d/su
+ 1359  /sbin/modprobe -n -v cramfs | /bin/grep -E '(cramfs|install)
+ 1360  /sbin/modprobe -n -v cramfs | /bin/grep -E '(cramfs|install)'
+ 1361  grep -E '^blacklist[[:blank:]]*cramfs' /etc/modprobe.d/*
+ 1362  /sbin/modprobe -n -v cramfs | /bin/grep -E '(cramfs|install)'
+ 1363  /sbin/modprobe -n -v udf | /bin/grep -E '(cramfs|install)'
+ 1364  vi /etc/modprobe.d/
+ 1365  vi /etc/modprobe.conf
+ 1366  vi /etc/modprobe.d/
+ 1367  modprobe -r cramfs
+ 1368  modprobe -r usb-storage
+ 1369  modprobe -r usb-storagesdf
+ 1370  /sbin/lsmod | /bin/grep cramfs | /usr/bin/awk '{print} END {if (NR == 0) print "pass"; else print "fail"}'
+ 1371  /sbin/modprobe
+ 1372  cd /sbin/modprobe
+ 1373  modprobe
+ 1374  modprobe -h
+ 1375  modprobe -a
+ 1376  modprobe -n
+ 1377  modprobe
+ 1378  modprobe ?
+ 1379  modprobe --help
+ 1380  modprobe -v
+ 1381  modprobe -h
+ 1382  modprobe -i cramfs
+ 1383  modprobe -f cramfs
+ 1384  modprobe
+ 1385  modprobe -h
+ 1386  modprobe cramfs
+ 1387  modprobe udf
+ 1388  modprobe usb-storage
+ 1389  rmmod cra
+ 1390  rmmod usb-storage
+ 1391  modprobe usb-storage
+ 1392  rmmod usb-storage
+ 1393  modprobe -f usb-storage
+ 1394  rmmod usb-storage
+ 1395  rmmod usb_storage
+ 1396  rmmod usbstorage
+ 1397  rmmod usb-storage
+ 1398  /sbin/modprobe -n -v usb-storage
+ 1399  #!/usr/bin/env bash
+ 1400  { l_output="" l_output2=""; l_mname="cramfs" # set module name
+ 1401  l_loadable="$(modprobe -n -v "$l_mname")"
+ 1402  if grep -Pq -- '^\h*install \/bin\/(true|false)' <<< "$l_loadable"; then l_output="$l_output\n - module: \"$l_mname\" is not loadable: \"$l_loadable\""; else l_output2="$l_output2\n - module: \"$l_mname\" is loadable: \"$l_loadable\""; fi
+ 1403  if ! lsmod | grep "$l_mname" > /dev/null 2>&1; then l_output="$l_output\n - module: \"$l_mname\" is not loaded" ; else l_output2="$l_output2\n - module: \"$l_mname\" is loaded" ; fi
+ 1404  if grep -Pq -- "^\h*blacklist\h+$l_mname\b" /etc/modprobe.d/*; then l_output="$l_output\n - module: \"$l_mname\" is deny listed in: \"$(grep -Pl -- "^\h*blacklist\h+$l_mname\b" /etc/modprobe.d/*)\""; else l_output2="$l_output2\n - module: \"$l_mname\" is not deny listed"; fi
+ 1405  if [ -z "$l_output2" ]; then echo -e "\n- Audit Result:\n ** PASS **\n$l_output\n" ; else echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\n$l_output2\n"; [ -n "$l_output" ] && echo -e "\n- Correctly set:\n$l_output\n" ; fi; }
+ 1406  #!/usr/bin/env bash
+ 1407  { l_output="" l_output2=""; l_mname="usb-storage" # set module name
+ 1408  l_loadable="$(modprobe -n -v "$l_mname")"
+ 1409  if grep -Pq -- '^\h*install \/bin\/(true|false)' <<< "$l_loadable"; then l_output="$l_output\n - module: \"$l_mname\" is not loadable: \"$l_loadable\""; else l_output2="$l_output2\n - module: \"$l_mname\" is loadable: \"$l_loadable\""; fi
+ 1410  if ! lsmod | grep "$l_mname" > /dev/null 2>&1; then l_output="$l_output\n - module: \"$l_mname\" is not loaded" ; else l_output2="$l_output2\n - module: \"$l_mname\" is loaded" ; fi
+ 1411  if grep -Pq -- "^\h*blacklist\h+$l_mname\b" /etc/modprobe.d/*; then l_output="$l_output\n - module: \"$l_mname\" is deny listed in: \"$(grep -Pl -- "^\h*blacklist\h+$l_mname\b" /etc/modprobe.d/*)\""; else l_output2="$l_output2\n - module: \"$l_mname\" is not deny listed"; fi
+ 1412  if [ -z "$l_output2" ]; then echo -e "\n- Audit Result:\n ** PASS **\n$l_output\n" ; else echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit failure:\n$l_output2\n"; [ -n "$l_output" ] && echo -e "\n- Correctly set:\n$l_output\n" ; fi; }
+ 1413  ufw allow out on lo
+ 1414  ufw deny in from 127.0.0.0/8
+ 1415  ufw deny in from ::1
+ 1416  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1417  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec /usr/bin/stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^h*H+h*([0,2,4,6][0,4]0)h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1418  ls -la /etc/audit/plugins.d/af_unix.conf
+ 1419  find /etc/audit/ -type f ( -name '*.conf' -o -name '*.rules' ) -exec chmod u-x,g-wx,o-rwx {} +
+ 1420  clear
+ 1421  find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec chmod u-x,g-wx,o-rwx {} +
+ 1422  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec /usr/bin/stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^h*H+h*([0,2,4,6][0,4]0)h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1423  find /etc/audit/ -type f -name '*.conf' -o -name '*.rules' -exec chmod u-x,g-wx,o-rwx {} +
+ 1424  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec /usr/bin/stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^h*H+h*([0,2,4,6][0,4]0)h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1425  clear
+ 1426  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec /usr/bin/stat -Lc "%n %a" {} + | /bin/grep -P -- '^h*H+h*([0,2,4,6][0,4]0)h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1427  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec /usr/bin/stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^h*H+h*([0,2,4,6][0,4]0)h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1428  find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec stat -Lc "%n %a" {} + | grep -Pv -- '^\h*\H+\h*([0,2,4,6][0,4]0)\h*$'
+ 1429  find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec stat -Lc "%n %a" {} + | grep -Pv -- '^\h*\H+\h*([0,2,4,6][0,4]0)\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1430  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^\h*\H+\h*([0,2,4,6][0,4]0)\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1431  ufw status verbos
+ 1432  ufw status verbose
+ 1433  cat /etc/aide/aide.conf
+ 1434  vi /etc/login.defs
+ 1435  vi /etc/ssh/sshd_config
+ 1436  cat /etc/apt/sources.list
+ 1437  exit
+ 1438  vi /etc/ssh/sshd_config
+ 1439  systemctl restart sshd
+ 1440  systemctl restart ssh
+ 1441  rm -Rf /var/lib/private/systemd/journal-upload
+ 1442  clear
+ 1443  stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -Pv -- '^\h*\H+\h+([0- 7][0,1,4,5][0,1,4,5])\h*$'
+ 1444  stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -Pv -- '^\h*\H+\h+([0-7][0,1,4,5][0,1,4,5])\h*$'
+ 1445  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -Pv -- '^\h*\H+\h+([0-7][0,1,4,5][0,1,4,5])\h*$' | | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1446  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -Pv -- '^\h*\H+\h+([0-7][0,1,4,5][0,1,4,5])\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1447  /usr/bin/stat -c "%n %U" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -Pv -- '^\h*\H+\h+root\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1448  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec /usr/bin/stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^h*H+h*([0,2,4,6][0,4]0)h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1449  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec /usr/bin/stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^h*H+h*([0,2,4,6][0,4]0)\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1450  vi /etc/ssh/sshd_config
+ 1451  systemctl restart sshd
+ 1452  systemctl restart ssh
+ 1453  vi /etc/pam.d/common-password
+ 1454  /etc/pam.d/common-password - regex '^password.*pam_unix.so
+ 1455  vi /etc/pam.d/common-password
+ 1456  vi /etc/login.defs
+ 1457  vi /etc/pam.d/common-password
+ 1458  chage --mindays 1 gdcadmin
+ 1459  chage --mindays 1 root
+ 1460  chage --inactive 30 root
+ 1461  chage --inactive 30 gdcadmin
+ 1462  apt install libpam-pwquality
+ 1463  vi /etc/pam.d/common-password
+ 1464  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1465  #!/usr/bin/env bash
+ 1466  { echo -e "\n- Start remediation - logfiles have appropriate permissions and ownership";    find /var/log -type f | while read -r fname; do       bname="$(basename "$fname")";       case "$bname" in lastlog | lastlog.* | wtmp | wtmp.* | btmp | btmp.*)             ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6][0,4]\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-wx "$fname" ;             ! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*root\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(utmp|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname" ; 			;;          secure | auth.log)  			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6][0,4]\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-wx "$fname" ;             ! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*(syslog|root)\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 		! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(adm|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname" ; 			;;          SSSD | sssd)             ! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-rwx "$fname"; 			! stat -Lc "%U" "$fname" | grep -Piq -- '^\h*(SSSD|root)\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Piq -- '^\h*(SSSD|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname"; 			;; 		gdm | gdm3) 			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,2,4,6]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod ug-x,o-rwx; 			! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*root\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(gdm3?|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname";             ;;         *.journal) 			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,4]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod u-x,g-wx,o-rwx "$fname"; 			! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*root\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(systemd- journal|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname"; ;;  		*) 			! stat -Lc "%a" "$fname" | grep -Pq -- '^\h*[0,2,4,6][0,4]0\h*$' && echo -e "- changing mode on \"$fname\"" && chmod u-x,g-wx,o-rwx "$fname"; 			! stat -Lc "%U" "$fname" | grep -Pq -- '^\h*(syslog|root)\h*$' && echo -e "- changing owner on \"$fname\"" && chown root "$fname"; 			! stat -Lc "%G" "$fname" | grep -Pq -- '^\h*(adm|root)\h*$' && echo -e "- changing group on \"$fname\"" && chgrp root "$fname"; 			;;  		esac; 	done; echo -e "- End remediation - logfiles have appropriate permissions and ownership\n"; }
+ 1467  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1468  vi /etc/rc.local
+ 1469  chmod 600 /var/log/btmp
+ 1470  chmod 600 /var/log/lastlog
+ 1471  chmod 600 /var/log/wtmp
+ 1472  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1473  clear
+ 1474  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1475  reboot
+ 1476  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1477  vi /etc/init.d
+ 1478  grep -r "btmp" /etc/init.d/
+ 1479  grep -r "lastlog" /etc/init.d/
+ 1480  vi /usr/lib/tmpfiles.d/var.conf
+ 1481  chmod 600 /var/log/wtmp
+ 1482  chmod 600 /var/log/lastlog
+ 1483  chmod 600 /var/log/btmp
+ 1484  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1485  ls
+ 1486  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1487  reboot
+ 1488  cd
+ 1489  OUTPUT=$(ls -l /var/log); /usr/bin/find /var/log -type f -perm /g+wx,o+rwx -ls | /usr/bin/awk -v awkvar="${OUTPUT}" '{print} END {if (NR == 0) print awkvar "\npass" ; else print "fail"}'
+ 1490  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1491  vi /etc/tmpfiles.d/*.conf
+ 1492  vi /usr/lib/tmpfiles.d/*.conf
+ 1493  vi /usr/lib/tmpfiles.d/00rsyslog.conf
+ 1494  ls -la /sbin/auditctl
+ 1495  /usr/bin/stat -c "%n %a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | /bin/grep -Pv -- '^h*H+h+([0-7][0,1,4,5][0,1,4,5])h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1496  find '$(dirname $( awk -F'=' '/^s*log_files*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))' -type f ( ! -perm 600 -a ! -perm 0400 -a ! -perm 0200 -a ! -perm 0000 -a ! -perm 0640 -a ! -perm 0440 -a ! -perm 0040 ) -exec chmod u-x,g-wx,o-rwx {} +
+ 1497  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^\h*\H+\h*([0,2,4,6][0,4]0)\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}
+ 1498  /usr/bin/find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec stat -Lc "%n %a" {} + | /bin/grep -Pv -- '^\h*\H+\h*([0,2,4,6][0,4]0)\h*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1499  /usr/bin/stat -Lc "%n %a" "$(dirname $( awk -F"=" '/^s*log_file\s*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -v '[0,2,4,6][0,4]0' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1500  /usr/bin/stat -Lc "%n %a" "$(dirname $( awk -F"=" '/^s*log_files*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -v '[0,2,4,6][0,4]0' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1501  vi /etc/audit/auditd.conf
+ 1502  vi /etc/aide/aide.conf
+ 1503  grep -P -- '(\/sbin\/(audit|au)\H*\b)' /etc/aide/aide.conf
+ 1504  /usr/bin/stat -c "%n %U" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -Pv -- '^h*H+h+rooth*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1505  /usr/bin/stat -c "%n %U" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules | grep -P -- '^h*H+h+rooth*$' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1506  mount -o remount /var
+ 1507  mount -o remount /tmp
+ 1508  mount -o remount,noexec /tmp
+ 1509  mount -o remount,nodev /tmp
+ 1510  mount -o remount,nosuid /tmp
+ 1511  mount -o remount,nosuid /var
+ 1512  vi /etc/fstab
+ 1513  systemctl daemon-reload
+ 1514  rm -Rf var/lib/private/systemd/journal-upload
+ 1515  vi /etc/systemd/system/local-fs.target.wants/tmp.mount
+ 1516  vi /etc/systemd/system/local-fs.target.wants
+ 1517  vi /etc/systemd/system/local-fs.target.wants/tmp.mount
+ 1518  vi /etc/systemd/system
+ 1519  systemctl restart tmp.mount
+ 1520  systemctl daemon-reload
+ 1521  systemctl restart tmp.mount
+ 1522  rm -Rf var/lib/private/systemd/journal-upload
+ 1523  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^s*log_files*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -Pv '^h*H+h+(adm|root)b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1524  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^s*log_file\s*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -Pv '^h*H+h+(adm|root)b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1525  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^s*log_files*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -Pv '^h*H+h+(adm|root)b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1526  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^\s*log_file\s*=\s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -Pv '^\h*\H+\h+(adm|root)\b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}’
+ 1527  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^\s*log_file\s*=\s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -Pv '^\h*\H+\h+(adm|root)\b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}
+ 1528  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^\s*log_file\s*=\s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -Pv '^\h*\H+\h+(adm|root)\b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}"
+ 1529  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^\s*log_file\s*=\s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -Pv '^\h*\H+\h+(adm|root)\b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}
+ 1530  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^\s*log_file\s*=\s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep --Pv '^\h*\H+\h+(adm|root)\b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}’
+ 1531  /usr/bin/stat -c "%n %G" "$(dirname $(awk -F"=" '/^\s*log_file\s*=\s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep --Pv '^\h*\H+\h+(adm|root)\b' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}
+ 1532  clear
+ 1533  find '$(dirname $( awk -F'=' '/^s*log_files*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))' -type f ( ! -perm 600 -a ! -perm 0400 -a ! -perm 0200 -a ! -perm 0000 -a ! -perm 0640 -a ! -perm 0440 -a ! -perm 0040 ) -exec chmod u-x,g-wx,o-rwx {} +
+ 1534  /usr/bin/stat -Lc "%n %a" "$(dirname $( awk -F"=" '/^s*log_file\s*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -v '[0,2,4,6][0,4]0' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1535  /usr/bin/stat -Lc "%n %a" "$(dirname $( awk -F"=" '/^s*log_files*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -v '[0,2,4,6][0,4]0' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1536  clear
+ 1537  /usr/bin/stat -Lc "%n %a" "$(dirname $( awk -F"=" '/^s*log_files*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -v '[0,2,4,6][0,4]0' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1538  /usr/bin/stat -Lc "%n %a" "$(dirname $( awk -F"=" '/^s*log_file\s*=s*/ {print $2}' /etc/audit/auditd.conf | xargs))"/* | /bin/grep -v '[0,2,4,6][0,4]0' | /usr/bin/awk '{print} END { if(NR==0) print "pass" ; else print "fail"}'
+ 1539  vi /etc/audit/auditd.conf
+ 1540  ls -la /var/log/audit/
+ 1541  cd ..
+ 1542  faillock
+ 1543  cd
+ 1544  vi /etc/systemd/system/local-fs.target.wants/tmp.mount
+ 1545  vi /etc/systemd/system/
+ 1546  mount -o remount /tmp
+ 1547  vi /etc/fstab
+ 1548  mount -o remount /var
+ 1549  findmnt --kernel /var | grep noexec
+ 1550  findmnt --kernel /var | grep nodev
+ 1551  apt update
+ 1552  apt upgrade
+ 1553  apt autoremove
+ 1554  dpkg autorclean
+ 1555  dpkg autoclean
+ 1556  clear
+ 1557  cd
+ 1558  vi /etc/fstab
+ 1559  mount -o remount /tmp
+ 1560  mount -o remount /dev/shm
+ 1561  mount -o remount /
+ 1562  mount -o remount /var
+ 1563  mount -o remount /var/log
+ 1564  mount -o remount /home
+ 1565  mount -o remount /var/tmp
+ 1566  mount -o remount /boot
+ 1567  vi /etc/grub.d/10_linux
+ 1568  update-grub
+ 1569  exit
+ 1570  vi /
+ 1571  clear
+ 1572  vi /etc/netplan/00-installer-config.yaml
+ 1573  clear
+ 1574  netplan apply
+ 1575  ip a s
+ 1576  clear
+ 1577  useradd -s /bin/bash -m -c "BMS sysadmin" sysadmin
+ 1578  passwd sysadmin
+ 1579  usermod -aG sudo sysadmin
+ 1580  passwd -e sysadmin
+ 1581  vi /etc/ssh/sshd_config
+ 1582  systemctl restart sshd
+ 1583  clear
+ 1584  apt-get update
+ 1585  clear
+ 1586  apt-get upgrade
+ 1587  clear
+ 1588  ip a s
+ 1589  vi /etc/netplan/00-installer-config.yaml
+ 1590  netplan apply
+ 1591  clear
+ 1592  ip a s
+ 1593  lsblk
+ 1594  apt update
+ 1595  apt upgrade
+ 1596  ufw status numbered
+ 1597  ufw delete 1
+ 1598  ufw delete 2
+ 1599  ufw status
+ 1600  apt update
+ 1601  apt upgrade
+ 1602  vi /etc/hostname
+ 1603  cd
+ 1604  ufw status
+ 1605  reboot
+ 1606  cd
+ 1607  ufw status
+ 1608  cd
+ 1609  ufw status
+ 1610  lsblk
+ 1611  lsmem
+ 1612  lscpu
+ 1613  lsblk
+ 1614  ufw status
+ 1615  apt update
+ 1616  apt upgrade
+ 1617  lsblk
+ 1618  netplan
+ 1619  netplan status
+ 1620  cd /etc/netplan/
+ 1621  ls
+ 1622  more 00-installer-config.yaml
+ 1623  cd
+ 1624  cd /etc/netplan/
+ 1625  ls
+ 1626  chmod 600 00-installer-config.yaml
+ 1627  vi 00-installer-config.yaml
+ 1628  netplan generate
+ 1629  netplan apply
+ 1630  exit
+ 1631  cd
+ 1632  cd /etc/netplan/
+ 1633  ls
+ 1634  more
+ 1635  more 00-installer-config.yaml
+ 1636  more /etc/hostname
+ 1637  cd
+ 1638  df -h
+ 1639  systemctl --type=service
+ 1640  ufw status
+ 1641  systemctl list-unit-files
+ 1642  systemctl status aidecheck
+ 1643  more /etc/aide/aide.conf
+ 1644  df -h
+ 1645  ufw status
+ 1646  apt update
+ 1647  apt upgrade
+ 1648  reboot
+ 1649  cd
+ 1650  ufw status
+ 1651  exit
+ 1652  vi /etc/netplan/00-installer-config.yaml
+ 1653  netplan apply
+ 1654  ip a
+ 1655  clear
+ 1656  ip a
+ 1657  history
+ 1658  clear
+ 1659  history
+ 1660  exit
+ 1661  cd
+ 1662  lsblk
+ 1663  fdisk /dev/sda
+ 1664  lsblk
+ 1665  lsblk -f
+ 1666  lsblk
+ 1667  fdisk /dev/sda
+ 1668  lsblk
+ 1669  lsblk -f
+ 1670  fdisk /dev/sda
+ 1671  xfs_growfs /dev/sda4
+ 1672  xfs_growfs /dev/sda3
+ 1673  xfs_growfs /dev/sda2
+ 1674  xfs_growfs /dev/sda1
+ 1675  df -hT
+ 1676  blkid /dev/sda3
+ 1677  lsblk -n -f /dev/sda3 | awk '{print $2}'
+ 1678  lsblk -n -f /dev/sda3
+ 1679  lsblk
+ 1680  lsblk -f
+ 1681  df -h
+ 1682  lsblk
+ 1683  fdisk /dev/sda
+ 1684  journalctl -f
+ 1685  fdisk
+ 1686  fdisk -l
+ 1687  lsblk
+ 1688  fdisk /dev/sda
+ 1689  lsblk
+ 1690  vgdisplay
+ 1691  pvdisplay
+ 1692  vgs
+ 1693  vgextend ubuntu-vg /dev/sda4
+ 1694  pvs
+ 1695  pvdisplay
+ 1696  df -h
+ 1697  lvextend -l +100%FREE /dev/ubuntu-vg/var
+ 1698  lvextend -l +100%FREE /dev/mapper/ubuntu--vg-var
+ 1699  lvextend -l +100%FREE /dev/ubuntu-vg/var
+ 1700  df -T
+ 1701  df -Th
+ 1702  xfs_growfs /dev/ubuntu-vg/var
+ 1703  df -Th
+ 1704  df -h
+ 1705  journalctl -f
+ 1706  exit
+ 1707  lsblk
+ 1708  lsblk sda4
+ 1709  lsblk /dev/sda4
+ 1710  apt full-upgrade

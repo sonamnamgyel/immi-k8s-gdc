@@ -1,0 +1,48 @@
+kubectl delete pod --grace-period=0 --force -n dev tourist-visa-6688f9586f-mqggw
+kubectl delete pod --grace-period=0 --force -n dev pii-577dfc577-dtmjf 
+kubectl delete pod --grace-period=0 --force -n dev watchlist-7779487cb7-frdmr
+
+kubectl delete pod --grace-period=0 --force -n elastic-stack  elasticsearch-es-default-0
+
+kubectl delete pod --grace-period=0 --force -n kube-system  metrics-server-78c94f7d5f-q5kqz
+
+kubectl delete pod --grace-period=0 --force -n kubernetes-dashboard  kubernetes-dashboard-api-6dbfb4c89c-9gvwh
+kubectl delete pod --grace-period=0 --force -n kubernetes-dashboard  kubernetes-dashboard-auth-874b4586b-sh7s8
+
+kubectl delete pod --grace-period=0 --force -n nats  prod-nats-0
+
+kubectl delete pod --grace-period=0 --force -n prod pii-65d49c86d4-85zcq
+
+
+
+kubectl -n harbor delete volumeattachment csi-516c6e47f4afbf5542f6e41002637cd587d5966b244994687e4391136932377e
+
+
+kubectl -n harbor get volumeattachment
+
+
+kubectl -n harbor delete volumeattachment csi-516c6e47f4afbf5542f6e41002637cd587d5966b244994687e4391136932377e
+
+
+csi-516c6e47f4afbf5542f6e41002637cd587d5966b244994687e4391136932377e
+
+
+
+k delete pod --grace-period=0 --force -n cert-manager           cert-manager-6dc66985d4-q4b94                   
+k delete pod --grace-period=0 --force -n default                jump                                            
+k delete pod --grace-period=0 --force -n dev-db                 mysql-0                                         
+k delete pod --grace-period=0 --force -n dev                    admin-portal-6ff68c5957-9jvtf                   
+k delete pod --grace-period=0 --force -n elastic-stack          elasticsearch-es-default-0                      
+k delete pod --grace-period=0 --force -n elastic-stack          kibana-kb-cc55949dd-2dm48                       
+k delete pod --grace-period=0 --force -n harbor                 registry-harbor-portal-74f95695bd-2krwn         
+k delete pod --grace-period=0 --force -n harbor                 registry-harbor-portal-74f95695bd-brzdx         
+k delete pod --grace-period=0 --force -n harbor                 registry-harbor-trivy-0                         
+k delete pod --grace-period=0 --force -n kube-system            coredns-76f75df574-hpjpd                        
+k delete pod --grace-period=0 --force -n kube-system            metrics-server-78c94f7d5f-8frn7                 
+k delete pod --grace-period=0 --force -n nats                   dev-nats-box-7d85557465-7qvvc                   
+k delete pod --grace-period=0 --force -n pxc                    percona-xtradb-cluster-operator-7c769dcc6d-ckr9r
+k delete pod --grace-period=0 --force -n pxc                    phpmyadmin-7f5f48fbdc-cv5xk                     
+k delete pod --grace-period=0 --force -n pxc                    rds-haproxy-2                                   
+k delete pod --grace-period=0 --force -n pxc                    rds-pxc-0                                       
+k delete pod --grace-period=0 --force -n pxc                    rds-pxc-2                                       
+k delete pod --grace-period=0 --force -n rook-ceph              rook-ceph-tools-7bddb946bd-7k2zr                

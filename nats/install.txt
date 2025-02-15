@@ -1,0 +1,22 @@
+helm repo add nats https://nats-io.github.io/k8s/helm/charts/
+
+helm show values nats/nats > values-ori.yaml
+
+
+
+k create ns nats
+
+# DEV NATS
+
+helm install dev nats/nats --values dev.yaml -n nats
+
+helm delete dev -n nats
+
+
+
+
+# PROD NATS
+
+helm install prod nats/nats --values prod.yaml -n nats
+
+helm delete prod -n nats

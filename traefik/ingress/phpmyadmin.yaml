@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: phpmyadmin
+  namespace: pxc
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`rds.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: phpmyadmin
+          port: 80
+
+  tls:
+    secretName: cert-rds.doi.gov.bt

@@ -1,0 +1,89 @@
+# INSTALL METALB 
+
+helm repo add metallb https://metallb.github.io/metallb
+helm show values metallb/metallb > values.ori.yaml
+
+kubectl create namespace metallb-system
+
+kubectl label nodes kw{1..8} bgp=true
+
+
+helm install metallb metallb/metallb -f values.yaml -n metallb-system
+
+helm upgrade metallb metallb/metallb -f values.yaml -n metallb-system
+
+kubectl apply -f resources.yaml
+
+
+
+
+
+#
+# FRR cli
+#
+
+k exec -it -n metallb-system metallb-speaker-d56m4 -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-ntsq8 -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-djn7w -c frr sh -- vtysh -c "show ip bgp summ"
+
+k exec -it -n metallb-system metallb-speaker-qnvm6 -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-cgqnx -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-kbw9j -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-whfqq -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-drbhw -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-scwn7 -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-c559n -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-tx85k -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-87rkj -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-b2c6j -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-vd8zg -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-gs44m -c frr sh -- vtysh -c "show ip bgp summ"
+
+k exec -it -n metallb-system metallb-speaker-cjwqk -c frr sh -- vtysh -c "show ip bgp summ"
+k exec -it -n metallb-system metallb-speaker-xxbhb -c frr sh -- vtysh -c "show ip bgp summ"
+
+
+
+metallb-speaker-87rkj                4/4     Running   0            10d   172.30.91.19   kw9    <none>           <none>
+metallb-speaker-b2c6j                4/4     Running   0            10d   172.30.91.20   kw10   <none>           <none>
+metallb-speaker-c559n                4/4     Running   0            10d   172.30.91.17   kw7    <none>           <none>
+metallb-speaker-cgqnx                4/4     Running   0            10d   172.30.91.12   kw2    <none>           <none>
+metallb-speaker-djn7w                4/4     Running   0            10d   172.30.91.10   km3    <none>           <none>
+metallb-speaker-drbhw                4/4     Running   0            10d   172.30.91.15   kw5    <none>           <none>
+metallb-speaker-gs44m                4/4     Running   0            10d   172.30.91.22   kw12   <none>           <none>
+metallb-speaker-kbw9j                4/4     Running   0            10d   172.30.91.13   kw3    <none>           <none>
+metallb-speaker-ntsq8                4/4     Running   0            10d   172.30.91.9    km2    <none>           <none>
+metallb-speaker-qnvm6                4/4     Running   0            10d   172.30.91.11   kw1    <none>           <none>
+metallb-speaker-scwn7                4/4     Running   0            10d   172.30.91.16   kw6    <none>           <none>
+metallb-speaker-tx85k                4/4     Running   0            10d   172.30.91.18   kw8    <none>           <none>
+metallb-speaker-vd8zg                4/4     Running   8 (9d ago)   10d   172.30.91.21   kw11   <none>           <none>
+metallb-speaker-whfqq                4/4     Running   0            10d   172.30.91.14   kw4    <none>           <none>
+metallb-speaker-d56m4                4/4     Running   0            10d   172.30.91.8    km1    <none>           <none>
+
+vtysh
+
+sh running config
+
+kubectl -n metallb-system rollout restart deploy
+kubectl -n metallb-system rollout restart daemonset
+
+
+
+kubectl -n traefik rollout restart deploy
+
+
+
+#
+# DELETE
+#
+helm delete metallb metallb/metallb -n metallb-system
+
+
+
+
+
+
+k get -n metallb-system pods -l app.kubernetes.io/component=speaker
+kubectl exec -n metallb-system metallb-speaker-tbkct -c frr -- vtysh -c "show running-config"
+kubectl exec -n metallb-system metallb-speaker-tbkct -c frr -- vtysh -c "show ip bgp summ"
+kubectl exec -n metallb-system metallb-speaker-d56m4 -c frr -- vtysh -c "show ip bgp neigh 172.30.91.1 ad"

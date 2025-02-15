@@ -1,0 +1,26 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: k8s-dash
+  namespace: kubernetes-dashboard
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`k8s-dash.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: kubernetes-dashboard-web
+          port: 8000
+    - match: Host(`k8s-dash.doi.gov.bt`) && ( PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) || PathPrefix(`/api/v1/me`))
+      kind: Rule
+      services:
+        - name: kubernetes-dashboard-auth
+          port: 8000
+    - match: Host(`k8s-dash.doi.gov.bt`) && ( PathPrefix(`/api`) || PathPrefix(`/metrics`) )
+      kind: Rule
+      services:
+        - name: kubernetes-dashboard-api
+          port: 8000
+  tls:
+    secretName: cert-k8s-dash.doi.gov.bt

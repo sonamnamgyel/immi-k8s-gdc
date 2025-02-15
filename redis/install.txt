@@ -1,0 +1,25 @@
+k create ns redis
+
+kubectl apply -f redis-config.yaml
+
+kubectl apply -f redis-statefulset.yaml
+
+kubectl apply -f redis-service.yaml
+
+kubectl get pods -n redis -l app=redis -o custom-columns=:metadata.name
+
+kubectl -n redis exec -it redis-cluster-0 -- redis-cli --cluster create \
+  redis-cluster-0.redis:6379 redis-cluster-1.redis:6379 redis-cluster-2.redis:6379 \
+  redis-cluster-3.redis:6379 redis-cluster-4.redis:6379 redis-cluster-5.redis:6379 \
+  --cluster-replicas 1 --cluster-yes
+
+
+
+
+kubectl -n redis exec -it redis-cluster-0 -- redis-cli cluster info
+kubectl -n redis exec -it redis-cluster-0 -- redis-cli cluster nodes
+
+
+kubectl -n redis exec -it redis-cluster-0 -- redis-cli CLIENT LIST
+kubectl -n redis exec -it redis-cluster-0 -- redis-cli INFO clients | grep connected_clients
+kubectl -n redis exec -it redis-cluster-0 -- redis-cli MONITOR

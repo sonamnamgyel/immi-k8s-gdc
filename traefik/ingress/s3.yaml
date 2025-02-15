@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: s3
+  namespace: minio
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`s3.immi.gov.bt`)
+      kind: Rule
+      services:
+        - name: s3-minio
+          port: 9000
+    - match: Host(`s3-gw.immi.gov.bt`)
+      kind: Rule
+      services:
+        - name: s3-minio
+          port: 9001
+  tls:
+    secretName: cert-s3.immi.gov.bt

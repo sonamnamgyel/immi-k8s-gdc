@@ -1,0 +1,46 @@
+127.0.1.1 rke-node1
+10.25.3.101 rke-node1
+10.25.3.102 rke-node2
+10.25.3.103 rke-node3
+
+# node1
+curl -sfL https://get.rke2.io | sh -
+sudo systemctl enable --now rke2-server
+cat /var/lib/rancher/rke2/server/node-token
+
+# node2 & node3
+curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE="agent" sh -
+systemctl enable rke2-agent.service
+
+mkdir -p /etc/rancher/rke2/
+
+
+echo "server: https://rke-node1:9345" | sudo tee /etc/rancher/rke2/config.yaml
+echo "token: K10a27e2a2331d684117b8285facefe01cb02af2a1851d3bfafc1cbc41353a0ed61::server:a3503945b761ed8a2d8ac84e8166dc18" | sudo tee -a /etc/rancher/rke2/config.yaml
+
+sudo systemctl enable --now rke2-agent
+
+
+helm install rancher rancher-latest/rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.immi.gov.bt \
+  --set bootstrapPassword=admin
+
+
+
+rancher.immi.gov.bt
+edXqJkdN7cUMWVIl
+
+
+
+
+sonam
+9CWPm9gNgyyd4vdB
+
+
+rancher.immi.gov.bt:53 {
+        hosts {
+          10.25.3.101 rancher.immi.gov.bt
+          fallthrough
+        }
+    }

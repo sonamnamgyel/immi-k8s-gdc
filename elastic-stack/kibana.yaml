@@ -1,0 +1,12 @@
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: kibana
+spec:
+  version: 8.13.4
+  count: 1
+  config:
+    server.host: "0.0.0.0"
+    server.publicBaseUrl: https://mon.immi.gov.bt
+  elasticsearchRef:
+    name: elasticsearch

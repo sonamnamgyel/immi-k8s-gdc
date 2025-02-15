@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ceph-dash
+  namespace: rook-ceph
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`rgw.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: rook-ceph-mgr-dashboard
+          port: 7000
+  tls:
+    secretName: cert-rgw.doi.gov.bt
+
+    

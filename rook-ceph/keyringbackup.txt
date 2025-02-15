@@ -1,0 +1,32 @@
+sonamnamgyel ~ % kubectl -n rook-ceph get secret rook-ceph-mon -o yaml
+
+apiVersion: v1
+data:
+  ceph-secret: QVFDell4Vm1qQkxySFJBQUlqc283b05ZWTNEMTdHQnVYaW5QTUE9PQ==
+  ceph-username: Y2xpZW50LmFkbWlu
+  fsid: ZmQ2YWMzNmEtZTdmNy00ZjMyLTk0MTItMjc1OTVkMzJlNWVi
+  mon-secret: QVFDell4Vm1kR0Q1R2hBQXliWk91YW5tM3h5cGtSRy82QTkzckE9PQ==
+kind: Secret
+metadata:
+  creationTimestamp: "2024-04-09T15:50:11Z"
+  finalizers:
+  - ceph.rook.io/disaster-protection
+  name: rook-ceph-mon
+  namespace: rook-ceph
+  ownerReferences:
+  - apiVersion: ceph.rook.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: CephCluster
+    name: rook-ceph
+    uid: 805b96d6-dba3-46b8-931e-c07a14b33334
+  resourceVersion: "1473420"
+  uid: 53e842c8-e9ad-446a-821b-647d46f21497
+type: kubernetes.io/rook
+
+
+
+
+
+
+ AQCzYxVmdGD5GhAAybZOuanm3xypkRG/6A93rA== 

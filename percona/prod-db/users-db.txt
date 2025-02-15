@@ -1,0 +1,106 @@
+#
+ALTER USER 'test'@'%' IDENTIFIED BY 'test';
+FLUSH PRIVILEGES;
+DROP DATABASE IF EXISTS test_db;
+DROP USER IF EXISTS 'test'@'%';
+#
+
+CREATE DATABASE admin_auth_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'admin-auth'@'%' IDENTIFIED BY 'AAePPl5VUhot8BdrUZ7i6O';
+GRANT ALL PRIVILEGES ON admin_auth_db.* TO 'admin-auth'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE client_auth_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'client-auth'@'%' IDENTIFIED BY 'CAIo1v1I0ERD4Jf9Kdr2y4';
+GRANT ALL PRIVILEGES ON client_auth_db.* TO 'client-auth'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE common_data_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'common-data'@'%' IDENTIFIED BY 'CDzNBqOGYJVNwxtidkb902';
+GRANT ALL PRIVILEGES ON common_data_db.* TO 'common-data'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE pii_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'pii'@'%' IDENTIFIED BY 'PI1xGwWQVTmUrT949CeSLZ';
+GRANT ALL PRIVILEGES ON pii_db.* TO 'pii'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE tourist_visa_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'tourist-visa'@'%' IDENTIFIED BY 'TVzEiz1nTy7A7R4OAc9czj';
+GRANT ALL PRIVILEGES ON tourist_visa_db.* TO 'tourist-visa'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE watchlist_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'watchlist'@'%' IDENTIFIED BY 'WLwncyLOTQy37olrVA0yFE';
+GRANT ALL PRIVILEGES ON watchlist_db.* TO 'watchlist'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE payment_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'payment'@'%' IDENTIFIED BY 'PjKxWV6FL6qZhMAeMU7eE';
+GRANT ALL PRIVILEGES ON payment_db.* TO 'payment'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE bms_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'bms'@'%' IDENTIFIED BY 'TiwXzj7HSw0BrLkyJhos';
+GRANT ALL PRIVILEGES ON bms_db.* TO 'bms'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE non_tourist_visa_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'non-tourist-visa'@'%' IDENTIFIED BY 'Non#TVisa$Up!HGFLrRwk#204';
+GRANT ALL PRIVILEGES ON non_tourist_visa_db.* TO 'non-tourist-visa'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE casual_visitor_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'casual-visitor'@'%' IDENTIFIED BY 'C@VI1xGwWQVTmUrT949CeS#204';
+GRANT ALL PRIVILEGES ON casual_visitor_db.* TO 'casual-visitor'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE report_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'report'@'%' IDENTIFIED BY 'R3P0$T@$Up!HGLrRwk#204';
+GRANT ALL PRIVILEGES ON report_db.* TO 'report'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE visa_on_arrival_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'visa-on-arrival'@'%' IDENTIFIED BY 'VorJr1@38M7%kVMRdR95dmT';
+GRANT ALL PRIVILEGES ON visa_on_arrival_db.* TO 'visa-on-arrival'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE route_permit_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'route-permit'@'%' IDENTIFIED BY '4F79cdMmQn1zexjxj1uA#';
+GRANT ALL PRIVILEGES ON route_permit_db.* TO 'route-permit'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE permit_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'permit'@'%' IDENTIFIED BY 'iR&nLJg%0!lPf450@y$O';
+GRANT ALL PRIVILEGES ON permit_db.* TO 'permit'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE enrollment_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'enrollment'@'%' IDENTIFIED BY 'fHwe1YqIEe3*YwXLD6Bh';
+GRANT ALL PRIVILEGES ON enrollment_db.* TO 'enrollment'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE offence_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'offence'@'%' IDENTIFIED BY 'k*Oy4HUt4aa%@oDJBXN9';
+GRANT ALL PRIVILEGES ON offence_db.* TO 'offence'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE foreign_worker_db CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'foreign-worker'@'%' IDENTIFIED BY 'om$WWf!p8osid3OnFAT9';
+GRANT ALL PRIVILEGES ON foreign_worker_db.* TO 'foreign-worker'@'%';
+FLUSH PRIVILEGES;
+
+
+
+
+
+
+
+
+
+

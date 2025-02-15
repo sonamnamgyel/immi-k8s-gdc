@@ -1,0 +1,48 @@
+helm repo add traefik https://traefik.github.io/charts
+
+helm show values traefik/traefik > values.ori.yaml
+
+kubectl create ns traefik
+helm install -f values.yaml --namespace=traefik traefik traefik/traefik 
+
+#
+helm upgrade --namespace=traefik -f values.yaml traefik traefik/traefik
+#
+kubectl patch svc traefik -p '{"spec": {"loadBalancerIP": "103.252.84.40"}}' -n traefik
+
+
+NAME: traefik
+LAST DEPLOYED: Thu Apr 11 21:00:44 2024
+NAMESPACE: traefik
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+Traefik Proxy v2.11.0 has been deployed successfully on traefik namespace !
+
+
+
+kubectl port-forward $(kubectl get pods --selector "app.kubernetes.io/name=traefik" --output=name -n traefik) 9000:9000 -n traefik
+
+http://localhost:9000/dashboard/
+
+kubectl apply -f configmap.yaml -n traefik
+
+kubectl patch svc traefik -p '{"metadata": {"labels": {"loadBalancer.sticky.cookie.name": "server_id"}}}' -n traefik
+
+
+
+helm delete traefik -n traefik
+
+helm show values traefik/traefik > values-ori.yaml
+
+helm upgrade --namespace=traefik \
+	--set="additionalArguments={--log.level=DEBUG}" \
+	traefik traefik/traefik
+
+
+
+helm install --namespace=traefik -f values.yaml traefik traefik/traefik
+
+k apply -f service2.yaml
+k apply -f pvt-service.yaml

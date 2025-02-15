@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: support
+  namespace: prod
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`support.immi.gov.bt`)
+      kind: Rule
+      services:
+        - name: support
+          port: 80
+  tls:
+    secretName: cert-support.immi.gov.bt

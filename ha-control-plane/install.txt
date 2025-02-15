@@ -1,0 +1,7 @@
+
+apt install haproxy -y
+
+
+apt -y install keepalived
+
+/etc/keepalived/keepalived.conf

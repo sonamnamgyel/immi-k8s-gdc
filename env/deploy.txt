@@ -1,0 +1,103 @@
+#
+# DEV
+#
+
+# DEV CREATE
+kubectl create configmap dev-visa-portal-env -n dev --from-env-file=dev/dev-visa-portal.env
+kubectl create configmap dev-admin-portal-env -n dev --from-env-file=dev/dev-admin-portal.env
+kubectl create configmap dev-admin-auth-env -n dev --from-env-file=dev/dev-admin-auth.env
+kubectl create configmap dev-client-auth-env -n dev --from-env-file=dev/dev-client-auth.env
+kubectl create configmap dev-common-data-env -n dev --from-env-file=dev/dev-common-data.env
+kubectl create configmap dev-pii-env -n dev --from-env-file=dev/dev-pii.env
+kubectl create configmap dev-tourist-visa-env -n dev --from-env-file=dev/dev-tourist-visa.env
+kubectl create configmap dev-watchlist-env -n dev --from-env-file=dev/dev-watchlist.env
+kubectl create configmap dev-payment-env -n dev --from-env-file=dev/dev-payment.env
+kubectl create configmap dev-bms-env -n dev --from-env-file=dev/dev-bms.env
+kubectl create configmap dev-non-tourist-visa-env -n dev --from-env-file=dev/dev-non-tourist-visa.env
+kubectl create configmap dev-casual-visitor-env -n dev --from-env-file=dev/dev-casual-visitor.env
+kubectl create configmap dev-report-env -n dev --from-env-file=dev/dev-report.env
+kubectl create configmap dev-visa-on-arrival-env -n dev --from-env-file=dev/dev-visa-on-arrival.env
+kubectl create configmap dev-route-permit-env -n dev --from-env-file=dev/dev-route-permit.env
+kubectl create configmap dev-permit-env -n dev --from-env-file=dev/dev-permit.env
+kubectl create configmap dev-enrollment-env -n dev --from-env-file=dev/dev-enrollment.env
+kubectl create configmap dev-offence-env -n dev --from-env-file=dev/dev-offence.env
+kubectl create configmap dev-foreign-worker-env -n dev --from-env-file=dev/dev-foreign-worker.env
+kubectl create configmap dev-bms-pre-registration-env -n dev --from-env-file=dev/dev-bms-pre-registration.env
+
+
+# DEV UPDATE
+kubectl create configmap dev-visa-portal-env -n dev --from-env-file=dev/dev-visa-portal.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-admin-portal-env -n dev --from-env-file=dev/dev-admin-portal.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-admin-auth-env -n dev --from-env-file=dev/dev-admin-auth.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-client-auth-env -n dev --from-env-file=dev/dev-client-auth.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-common-data-env -n dev --from-env-file=dev/dev-common-data.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-pii-env -n dev --from-env-file=dev/dev-pii.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-tourist-visa-env -n dev --from-env-file=dev/dev-tourist-visa.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-watchlist-env -n dev --from-env-file=dev/dev-watchlist.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-payment-env -n dev --from-env-file=dev/dev-payment.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-bms-env -n dev --from-env-file=dev/dev-bms.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-non-tourist-visa-env -n dev --from-env-file=dev/dev-non-tourist-visa.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-casual-visitor-env -n dev --from-env-file=dev/dev-casual-visitor.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-report-env -n dev --from-env-file=dev/dev-report.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-visa-on-arrival-env -n dev --from-env-file=dev/dev-visa-on-arrival.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-route-permit-env -n dev --from-env-file=dev/dev-route-permit.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-permit-env -n dev --from-env-file=dev/dev-permit.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-enrollment-env -n dev --from-env-file=dev/dev-enrollment.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-offence-env -n dev --from-env-file=dev/dev-offence.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-foreign-worker-env -n dev --from-env-file=dev/dev-foreign-worker.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap dev-bms-pre-registration-env -n dev --from-env-file=dev/dev-bms-pre-registration.env --dry-run=client -o yaml | kubectl apply -f -
+
+
+
+# 
+# PROD
+#
+
+# CREATE
+kubectl create configmap visa-portal-env -n prod --from-env-file=prod/visa-portal.env
+kubectl create configmap admin-portal-env -n prod --from-env-file=prod/admin-portal.env
+kubectl create configmap admin-auth-env -n prod --from-env-file=prod/admin-auth.env
+kubectl create configmap client-auth-env -n prod --from-env-file=prod/client-auth.env
+kubectl create configmap common-data-env -n prod --from-env-file=prod/common-data.env
+kubectl create configmap pii-env -n prod --from-env-file=prod/pii.env
+kubectl create configmap tourist-visa-env -n prod --from-env-file=prod/tourist-visa.env
+kubectl create configmap watchlist-env -n prod --from-env-file=prod/watchlist.env
+kubectl create configmap payment-env -n prod --from-env-file=prod/payment.env
+kubectl create configmap support-env -n prod --from-env-file=prod/support.env
+kubectl create configmap bms-env -n prod --from-env-file=prod/bms.env
+kubectl create configmap non-tourist-visa-env -n prod --from-env-file=prod/non-tourist-visa.env
+kubectl create configmap casual-visitor-env -n prod --from-env-file=prod/casual-visitor.env
+kubectl create configmap report-env -n prod --from-env-file=prod/report.env
+kubectl create configmap bms-pre-registration-env -n prod --from-env-file=prod/bms-pre-registration.env
+kubectl create configmap admin-support-env -n prod --from-env-file=prod/admin-support.env
+kubectl create configmap visa-on-arrival-env -n prod --from-env-file=prod/visa-on-arrival.env
+kubectl create configmap route-permit-env -n prod --from-env-file=prod/route-permit.env
+kubectl create configmap permit-env -n prod --from-env-file=prod/permit.env
+kubectl create configmap enrollment-env -n prod --from-env-file=prod/enrollment.env
+kubectl create configmap offence-env -n prod --from-env-file=prod/offence.env
+kubectl create configmap foreign-worker-env -n prod --from-env-file=prod/foreign-worker.env
+
+
+# UPDATE
+kubectl create configmap visa-portal-env -n prod --from-env-file=prod/visa-portal.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap admin-portal-env -n prod --from-env-file=prod/admin-portal.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap admin-auth-env -n prod --from-env-file=prod/admin-auth.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap client-auth-env -n prod --from-env-file=prod/client-auth.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap common-data-env -n prod --from-env-file=prod/common-data.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap pii-env -n prod --from-env-file=prod/pii.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap tourist-visa-env -n prod --from-env-file=prod/tourist-visa.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap watchlist-env -n prod --from-env-file=prod/watchlist.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap payment-env -n prod --from-env-file=prod/payment.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap support-env -n prod --from-env-file=prod/support.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap bms-env -n prod --from-env-file=prod/bms.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap non-tourist-visa-env -n prod --from-env-file=prod/non-tourist-visa.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap casual-visitor-env -n prod --from-env-file=prod/casual-visitor.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap report-env -n prod --from-env-file=prod/report.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap bms-pre-registration-env -n prod --from-env-file=prod/bms-pre-registration.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap admin-support-env -n prod --from-env-file=prod/admin-support.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap visa-on-arrival-env -n prod --from-env-file=prod/visa-on-arrival.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap route-permit-env -n prod --from-env-file=prod/route-permit.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap permit-env -n prod --from-env-file=prod/permit.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap enrollment-env -n prod --from-env-file=prod/enrollment.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap offence-env -n prod --from-env-file=prod/offence.env --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap foreign-worker-env -n prod --from-env-file=prod/foreign-worker.env --dry-run=client -o yaml | kubectl apply -f -

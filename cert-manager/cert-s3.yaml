@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: s3.immi.gov.bt
+  namespace: minio
+spec:
+  secretName: cert-s3.immi.gov.bt
+  dnsNames:
+  - s3.immi.gov.bt
+  - s3-gw.immi.gov.bt
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

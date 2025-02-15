@@ -1,0 +1,8 @@
+k exec -it -n rook-ceph rook-direct-mount-56c5c5d757-qzn5m bash
+
+rbd status -p ceph-blockpool2-minio csi-vol-9c3142ae-dce7-4ce7-b7ec-74622c26df81
+rbd map ceph-blockpool2-minio/csi-vol-9c3142ae-dce7-4ce7-b7ec-74622c26df81
+
+
+
+fsck -fv /dev/rbd0

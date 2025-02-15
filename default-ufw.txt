@@ -1,0 +1,18 @@
+root@kw1:/home/sysadmin# ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere
+Anywhere (v6) on lo        ALLOW       Anywhere (v6)
+Anywhere (v6)              DENY        ::1
+22/tcp (v6)                ALLOW       Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+53/tcp (v6)                ALLOW       Anywhere (v6)
+443/tcp (v6)               ALLOW       Anywhere (v6)
+
+Anywhere (v6)              ALLOW OUT   Anywhere (v6) on lo
+Anywhere (v6)              ALLOW OUT   Anywhere (v6) on all
+80/tcp (v6)                ALLOW OUT   Anywhere (v6)
+443/tcp (v6)               ALLOW OUT   Anywhere (v6)
+53/tcp (v6)                ALLOW OUT   Anywhere (v6)

@@ -1,0 +1,60 @@
+kubectl create ns dev-db
+
+helm install mysql -n dev-db \
+  --set auth.rootPassword="DOI2024@k8smbz&NK#v" \
+  --set clusterDomain=doi.local \
+  --set auth.createDatabase=false \
+  --set primary.persistence.storageClass=ceph-block2 \
+  --set primary.persistence.size=10G \
+  --set primary.resourcesPreset=small \
+  --set image.tag=8.4.3 \
+    bitnami/mysql
+
+
+NAME: mysql
+LAST DEPLOYED: Mon Nov 18 15:11:19 2024
+NAMESPACE: dev-db
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: mysql
+CHART VERSION: 12.0.0
+APP VERSION: 8.4.3
+
+** Please be patient while the chart is being deployed **
+
+Tip:
+
+  Watch the deployment status using the command: kubectl get pods -w --namespace dev-db
+
+Services:
+
+  echo Primary: mysql.dev-db.svc.doi.local:3306
+
+Execute the following to get the administrator credentials:
+
+  echo Username: root
+  MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace dev-db mysql -o jsonpath="{.data.mysql-root-password}" | base64 -d)
+
+To connect to your database:
+
+  1. Run a pod that you can use as a client:
+
+      kubectl run mysql-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mysql:8.4.3 --namespace dev-db --env MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD --command -- bash
+
+  2. To connect to primary service (read/write):
+
+      mysql -h mysql.dev-db.svc.doi.local -uroot -p"$MYSQL_ROOT_PASSWORD"
+
+
+
+
+
+WARNING: Rolling tag detected (bitnami/mysql:8.4.3), please note that it is strongly recommended to avoid using rolling tags in a production environment.
++info https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html
+
+WARNING: There are "resources" sections in the chart not set. Using "resourcesPreset" is not recommended for production. For production installations, please set the following values according to your workload needs:
+  - primary.resources
+  - secondary.resources
++info https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/

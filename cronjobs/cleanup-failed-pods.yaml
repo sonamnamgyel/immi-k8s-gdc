@@ -1,0 +1,33 @@
+# k apply -f sa.yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: delete-failed-pods
+  namespace: ops
+spec:
+  concurrencyPolicy: Allow
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: sa-cronjob-runner
+          containers:
+          - command:
+            - sh
+            - -c
+            - kubectl get pods --all-namespaces | grep -E 'ImagePullBackOff|ErrImagePull|Evicted|ContainerStatusUnknown|Error|Terminating' | awk '{print $2 " --namespace=" $1}' | xargs kubectl delete pod
+            image: bitnami/kubectl
+            imagePullPolicy: Always
+            name: kubectl-runner
+            resources: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+          dnsPolicy: ClusterFirst
+          restartPolicy: Never
+          schedulerName: default-scheduler
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
+  schedule: '0 18 * * *'
+  successfulJobsHistoryLimit: 1
+  suspend: false

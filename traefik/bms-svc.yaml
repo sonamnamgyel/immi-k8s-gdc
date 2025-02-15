@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: traefik-bms
+  namespace: traefik
+  labels:
+    app.kubernetes.io/instance: traefik-traefik-bms
+    app.kubernetes.io/name: traefik-bms
+spec:
+  ports:
+    - name: web-bms
+      protocol: TCP
+      port: 80
+      targetPort: web
+    - name: websecure-bms
+      protocol: TCP
+      port: 443
+      targetPort: websecure
+  selector:
+    app.kubernetes.io/name: traefik
+  type: LoadBalancer
+  loadBalancerIP: 103.252.84.43

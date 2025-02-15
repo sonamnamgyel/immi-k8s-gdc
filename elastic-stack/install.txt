@@ -1,0 +1,54 @@
+helm repo add elastic https://helm.elastic.co
+helm repo update
+
+k delete ns elastic-stack
+
+k create -f crds.yaml 
+k apply -f operator.yaml 
+
+k create ns elastic-stack
+
+#
+# Elasticsearch
+#
+
+kubectl apply -f elasticsearch.yaml -n elastic-stack
+
+kubectl delete -f elasticsearch.yaml -n elastic-stack
+
+kubectl get elasticsearch -n elastic-stack
+
+
+kubectl get secret elasticsearch-es-elastic-user -o=jsonpath='{.data.elastic}' -n elastic-stack | base64 --decode; echo
+22zyecTs0XCjd35R18DM405s
+
+elasticsearch-es-http
+
+kubectl port-forward service/elasticsearch-es-http 9200 -n elastic-stack
+
+curl -u "elastic:22zyecTs0XCjd35R18DM405s" -k "https://localhost:9200"
+
+#
+# Kibana
+#
+
+kubectl apply -f kibana.yaml -n elastic-stack
+kubectl delete -f kibana.yaml -n elastic-stack
+
+kibana-kb-http
+
+kubectl port-forward service/kibana-kb-http 5601 -n elastic-stack
+
+user: elastic
+password: 22zyecTs0XCjd35R18DM405s
+
+
+#
+# Metricbeat for metrics
+#
+k apply -f metricbeat_hosts.yaml -n elastic-stack 
+
+#
+# Filebeat for logs
+k apply -f filebeat_autodiscover.yaml -n elastic-stack
+

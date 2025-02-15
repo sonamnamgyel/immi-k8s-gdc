@@ -1,0 +1,110 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: developer-sa
+  namespace: kubernetes-dashboard
+secrets:
+  - name: developer-secret
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  labels:
+  name: developer-cluster-role
+  namespace: default
+rules:
+- apiGroups:
+  - ""
+  resources: ["namespaces","pods", "configmaps", "services", "pods/log", "services/proxy"]
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  # - apply
+  # - update
+  # - patch
+  # - delete
+  # - proxy
+  # verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  labels:
+  name: developer-ns-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "namespaces", "nodes", "configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployment"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: developer-binding
+roleRef:
+  kind: ClusterRole
+  name: developer-cluster-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: developer-sa
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-default
+roleRef:
+  kind: Role
+  name: developer-ns-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: developer-sa
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-dev
+roleRef:
+  kind: Role
+  name: developer-ns-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: developer-sa
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-prod
+roleRef:
+  kind: Role
+  name: developer-ns-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: developer-sa
+  namespace: kubernetes-dashboard
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: developer-secret
+  namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/service-account.name: developer-sa
+type: kubernetes.io/service-account-token

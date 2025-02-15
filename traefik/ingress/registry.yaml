@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: registry
+  namespace: harbor
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`registry.doi.gov.bt`)
+      kind: Rule
+      services:
+      - name: registry-harbor-portal
+        port: 80
+    - match: Host(`registry.doi.gov.bt`) && PathPrefix(`/api/`) || PathPrefix(`/service/`) || PathPrefix(`/v2/`) || PathPrefix(`/chartrepo/`) || PathPrefix(`/c/`)
+      kind: Rule
+      services:
+      - name: registry-harbor-core
+        port: 80
+  tls:
+    secretName: cert-registry.doi.gov.bt

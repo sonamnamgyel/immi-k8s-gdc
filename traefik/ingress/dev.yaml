@@ -1,0 +1,115 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dev
+  namespace: dev
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`dev-visa.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: visa-portal
+          port: 3000
+
+    - match: Host(`dev-admin-ims.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: admin-portal
+          port: 3000
+
+    - match: Host(`dev-bms.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: bms-pre-registration
+          port: 3000
+
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/admin-auth`)
+      kind: Rule
+      services:
+        - name: admin-auth
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/client-auth`)
+      kind: Rule
+      services:
+        - name: client-auth
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/common-data`)
+      kind: Rule
+      services:
+        - name: common-data
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/pii`)
+      kind: Rule
+      services:
+        - name: pii
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/tourist-visa`)
+      kind: Rule
+      services:
+        - name: tourist-visa
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/payment-aggregator`)
+      kind: Rule
+      services:
+        - name: payment
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/watchlist`)
+      kind: Rule
+      services:
+        - name: watchlist
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/bms`)
+      kind: Rule
+      services:
+        - name: bms
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/non-tourist-visa`)
+      kind: Rule
+      services:
+        - name: non-tourist-visa
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/casual-visitor`)
+      kind: Rule
+      services:
+        - name: casual-visitor
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/report`)
+      kind: Rule
+      services:
+        - name: report
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/visa-on-arrival`)
+      kind: Rule
+      services:
+        - name: visa-on-arrival
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/route-permit`)
+      kind: Rule
+      services:
+        - name: route-permit
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/permit`)
+      kind: Rule
+      services:
+        - name: permit
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/enrollment`)
+      kind: Rule
+      services:
+        - name: enrollment
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/offence`)
+      kind: Rule
+      services:
+        - name: offence
+          port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/foreign-worker`)
+      kind: Rule
+      services:
+        - name: foreign-worker
+          port: 3000
+  tls:
+    secretName: cert-dev.doi.gov.bt
+  

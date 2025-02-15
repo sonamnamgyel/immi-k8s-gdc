@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: traefik-prod
+  namespace: traefik
+  labels:
+    app.kubernetes.io/instance: traefik-traefik-prod
+    app.kubernetes.io/name: traefik-prod
+spec:
+  ports:
+    - name: web-prod
+      protocol: TCP
+      port: 80
+      targetPort: web
+    - name: websecure-prod
+      protocol: TCP
+      port: 443
+      targetPort: websecure
+  selector:
+    app.kubernetes.io/name: traefik
+  type: LoadBalancer
+  loadBalancerIP: 103.252.84.42

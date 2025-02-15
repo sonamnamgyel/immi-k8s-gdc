@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dev-phpmyadmin
+  namespace: dev-db
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`dev-db.doi.gov.bt`)
+      kind: Rule
+      services:
+        - name: dev-phpmyadmin
+          port: 80
+
+  tls:
+    secretName: cert-dev-db.doi.gov.bt

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-portal
+  namespace: dev
+  labels:
+    app: admin-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-portal
+  template:
+    metadata:
+      labels:
+        app: admin-portal
+    spec:
+      containers:
+      - name: admin-portal
+        image: registry.doi.gov.bt/dev-doi/admin-portal:618c79c
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 200m
+        envFrom:
+          - configMapRef:
+              name: dev-admin-portal-env
+      imagePullSecrets:
+      - name: harbor-registry
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-portal
+  namespace: dev
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: admin-portal

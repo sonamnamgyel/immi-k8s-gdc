@@ -1,0 +1,410 @@
+#
+# Upgrade plan
+#
+apt remove kubelet kubeadm kubectl
+
+
+apt install kubeadm=1.24.2-00 kubelet=1.24.2-00 kubectl=1.24.2-00
+
+apt-mark hold kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
+
+
+
+systemctl enable kubelet
+systemctl restart kubelet
+systemctl restart kubelet
+
+echo b > /proc/sysrq-trigger
+
+
+############### BASIC HOST SETTINGS #########################################################
+
+hostnamectl set-hostname km3
+#
+# Disk UUID clogging logging
+#
+/etc/multipath.conf
+blacklist {
+    device {
+        vendor "VMware"
+        product "Virtual disk"
+    }
+}
+systemctl restart multipathd
+
+# 
+# Fix AIDE service / cron.daily filling /run/aide partition 
+# 
+mkdir /var/aide
+vi /etc/cron.daily/aide
+>>TMPBASE="/run/aide"
+TMPBASE="/var/aide"
+systemctl restart cron
+
+OR
+REMOVE
+rm -rf /etc/cron.daily/aide
+systemctl restart cron
+
+
+#
+# CHANGE ubuntu MIRROR to one of repository in Singapore
+mirror.0x.sg
+vi /etc/apt/sources.list
+:%s/bt.archive.ubuntu.com/mirror.0x.sg/g
+%s/mirror.0x.sg/mirror.sg.gs/g
+
+apt update && apt upgrade
+reboot
+apt autoremove
+#
+# ENABLE IPv6 if required and remove ipv6---
+#
+vi /etc/default/grub
+update-grub
+
+#
+# DISABLE or ENABLE UFW
+#
+
+##########################################################################################
+
+172.30.78.4 k8s-cluster.eralis.rsta.gov.bt
+
+# FOLLOW THIS GUIDE
+https://computingforgeeks.com/deploy-kubernetes-cluster-on-ubuntu-with-kubeadm/
+
+#
+# SWAP disable
+#
+swapon --show
+swapoff -a
+rm /swap.img
+delete /swap from /etc/fstab and reboot
+
+#
+# Modprobe modules doesn't load on reboot
+# 
+modprobe overlay
+modprobe br_netfilter
+
+vi /etc/modules-load.d/modules.conf
+overlay
+br_netfilter
+
+lsmod | grep br_netfilter
+lsmod | grep overlay
+
+
+#
+# sysctl doesn't activate kubernetes.conf on reboot. Add crontab to do this
+#
+/etc/sysctl.d/kubernetes.conf
+
+crontab -e
+@reboot /sbin/sysctl --load=/etc/sysctl.d/kubernetes.conf
+
+
+# check if its enabled
+sysctl -a | grep bridge
+
+
+# CRIO
+
+sudo su -
+OS="xUbuntu_20.04"
+VERSION=1.25
+echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.list
+curl -L https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:$VERSION/$OS/Release.key | apt-key add -
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key | apt-key add -
+
+
+
+sudo sed -i 's/10.85.0.0/10.0.0.0/g'c /etc/cni/net.d/100-crio-bridge.conf
+crictl rmi -q
+
+kubeadm config images pull
+
+#
+
+
+#
+# Kubeadm reset
+#
+kubeadm reset
+kubeadm reset
+
+#
+# UFW Firewall
+
+ufw allow from any to any port 6443 proto tcp
+ufw allow from any to any port 22 proto tcp
+
+ufw allow from any to any port 30000 proto tcp
+ufw allow from any to any port 80 proto tcp
+ufw allow from any to any port 443 proto tcp
+ufw allow from 172.30.78.1 to any port 179 proto tcp
+ufw allow from 172.30.78.0/24 to any port 10250 proto tcp
+ufw allow from 10.0.0.0/16 to 10.0.0.0/16
+
+
+ufw allow from 172.30.78.0/24 to any port 6443 proto tcp
+
+
+#
+# MASTER NODE 1
+#
+
+kubeadm init \
+  --pod-network-cidr=10.0.0.0/16 \
+  --upload-certs \
+  --control-plane-endpoint=k8s-cluster.gari.rsta.gov.bt \
+  --apiserver-cert-extra-sans=k8s-cluster.eralis.rsta.gov.bt,43.230.208.181,172.30.78.4 \
+  --service-dns-domain=eralis.local
+
+
+172.30.78.4 k8s-cluster.eralis.rsta.gov.bt
+
+kubectl -n kube-system get cm kubeadm-config -o yaml
+
+###################################
+
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of the control-plane node running the following command on each as root:
+
+  kubeadm join k8s-cluster.gari.rsta.gov.bt:6443 --token sqyqfj.w9zo7jpr22okdovu \
+  --discovery-token-ca-cert-hash sha256:66a3511fb8ef0d5bf7306cc36b10b951342610253c8b854af112f3aceb0ecce8 \
+  --control-plane --certificate-key a41881ddc2f52412ec84a8dd68725ff423dd3408f0e4f7af1e6bfb3fd618f2bc
+
+Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
+As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use
+"kubeadm init phase upload-certs --upload-certs" to reload certs afterward.
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join k8s-cluster.gari.rsta.gov.bt:6443 --token sqyqfj.w9zo7jpr22okdovu \
+  --discovery-token-ca-cert-hash sha256:66a3511fb8ef0d5bf7306cc36b10b951342610253c8b854af112f3aceb0ecce8
+
+
+###################################
+
+
+#
+# MASTER NODE 2 or more
+#
+
+ apt-mark unhold kubelet kubeadm kubectl
+ apt-mark hold kubelet kubeadm kubectl
+apt-mark showhold
+#
+# JOIN WORKER NODES
+#
+
+
+watch kubectl get pods --all-namespaces
+
+kubectl get nodes -o wide
+
+#
+# JOIN WORKER NODES ON EXISTING CLUSTER
+#
+kubeadm token create
+kubeadm token create --print-join-command
+
+
+kubeadm join k8s-cluster.gari.rsta.gov.bt:6443 --token y58jol.nriccuk26hjboubf \
+  --discovery-token-ca-cert-hash sha256:66a3511fb8ef0d5bf7306cc36b10b951342610253c8b854af112f3aceb0ecce8
+
+
+
+kubeadm join k8s-cluster.gari.rsta.gov.bt:6443 --token s5rhvr.b6qgvz276lnxlo1v --discovery-token-ca-cert-hash sha256:66a3511fb8ef0d5bf7306cc36b10b951342610253c8b854af112f3aceb0ecce8
+
+#
+# INSTALL Network Plugin eg. Calico
+#
+refer calico
+configure openebs
+
+
+kubectl config get-contexts
+kubectl config use-context do-sgp1-eralis
+kubectl config use-context ticl-tpu
+
+
+kubectl -n kubernetes-dashboard create token admin-user
+
+
+
+
+
+
+
+
+
+
+#UPGRADE
+
+
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+
+
+apt-mark showhold
+
+
+apt-mark unhold kubelet kubeadm kubectl
+
+
+
+rm -f /etc/apt/sources.list.d/devel\:kubic\:libcontainers\:stable*
+
+
+
+
+sudo su -
+OS="xUbuntu_20.04"
+VERSION=1.25
+echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.list
+curl -L https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:$VERSION/$OS/Release.key | apt-key add -
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key | apt-key add -
+
+
+
+
+apt update
+
+
+
+apt upgrade
+
+
+
+apt-mark hold kubelet kubeadm kubectl
+
+
+echo b > /proc/sysrq-trigger
+
+
+
+#
+# SNMP INSTALL
+#
+
+useradd librenms -d /var/opt/librenms -M -r -s "$(which bash)"
+usermod -a -G librenms www-data
+
+chown -R librenms:librenms /var/opt/librenms
+chmod 771 /var/opt/librenms
+setfacl -d -m g::rwx /var/opt/librenms/rrd /var/opt/librenms/logs /var/opt/librenms/bootstrap/cache/ /var/opt/librenms/storage/
+setfacl -R -m g::rwx /var/opt/librenms/rrd /var/opt/librenms/logs /var/opt/librenms/bootstrap/cache/ /var/opt/librenms/storage/
+setfacl -R -m g::rwx /var/opt/librenms/rrd /var/opt/librenms/logs /var/opt/librenms/bootstrap/cache/ /var/opt/librenms/storage/
+
+
+
+
+
+CREATE DATABASE librenms_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'librenms'@'localhost' IDENTIFIED BY 'l1b8P4IH^wg@YKa78SYsgf';
+GRANT ALL PRIVILEGES ON librenms_db.* TO 'librenms'@'localhost';
+FLUSH PRIVILEGES;
+exit
+
+
+
+$config['db_host'] = '127.0.0.1';
+$config['db_port'] = '3306';
+$config['db_user'] = 'librenms';
+$config['db_pass'] = 'l1b8P4IH^wg@YKa78SYsgf';
+$config['db_name'] = 'librenms_db';
+$config['db_socket'] = '/run/mysqld/mysqld.sock';
+
+
+apt install acl curl fping git graphviz imagemagick mariadb-client mariadb-server mtr-tiny nginx-full nmap php-cli php-curl php-fpm php-gd php-gmp php-json php-mbstring php-mysql php-snmp php-xml php-zip rrdtool snmp snmpd whois unzip python3-pymysql python3-dotenv python3-redis python3-setuptools python3-systemd python3-pip
+
+
+apt install wget php php-{pear,cgi,common,curl,mbstring,gd,mysql,bcmath,imap,json,xml,snmp,fpm,zip}
+
+
+
+ln -s /opt/librenms/lnms /usr/bin/lnms
+cp /opt/librenms/misc/lnms-completion.bash /etc/bash_completion.d/
+
+
+apt install snmp snmpd libsnmp-dev
+
+
+usr/bin/env php /var/opt/librenms/poller.php -h all
+
+
+1:25
+
+
+net-snmp-create-v3-user -ro -A aEr@LS2023# -a SHA -X pEr@LS2023# -x AES eralis
+
+
+
+
+snmpwalk -v3 -a SHA -A aEr@LS2023# -x AES -X pEr@LS2023# -l authPriv -u eralis localhost
+snmpwalk -v3 -a SHA -A aEr@LS2023# -x AES -X pEr@LS2023# -l authPriv -u eralis 172.30.78.10
+
+
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis localhost
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.5
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.6
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.7
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.8
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.9
+
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.10
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.11
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.12
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.13
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.14
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.15
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.16
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.17
+lnms device:add --v3 -a SHA -A 'aEr@LS2023#' -x AES -X 'pEr@LS2023#' -u eralis 172.30.78.18
+
+
+
+/run/mysqld/mysqld.sock
+
+DB_SOCKET=/run/mysqld/mysqld.sock
+$config['db_socket'] = '/run/mysqld/mysqld.sock';
+
+
+
+
+
+1.25.11-00
+
+ubeadm && \
+apt-get update && apt-get install -y kubeadm=1.25.11-00
+
+kubectl -n kube-system get cm kubeadm-config -o yaml
+
+
+ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key member list
+
+

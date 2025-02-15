@@ -1,0 +1,175 @@
+Fix<y>? yes
+Entry 'f66dd666-fdd9-4b42-a338-274db44aa4c3' in /doi/enrollment/49c60f50-a6f5-4aae-b7f6-684ae40a3305/2025/9a8c6bd0-e2fa-11ef-993e-9741d258800f.leftFourFingers.png (8560817) has deleted/unused inode 25600197.  Clear<y>? yes
+Entry '5dc195f8-dc4c-4f28-b9f5-f044f5511c88' in /doi/enrollment/49c60f50-a6f5-4aae-b7f6-684ae40a3305/2025/9a82f5f0-e2fa-11ef-993e-9741d258800f.rightFourFingers.png (8560816) has deleted/unused inode 25600196.  Clear<y>? yes
+Entry 'e8451f7b-57ee-4118-9893-44e9bbbb9701' in /doi/enrollment/49c60f50-a6f5-4aae-b7f6-684ae40a3305/2025/9a98eef0-e2fa-11ef-993e-9741d258800f.twoThumbs.png (8560818) has deleted/unused inode 25600198.  Clear<y>? yes
+Entry 'd2b23997-70ea-47d9-b89d-c33c4011d848' in /doi/passport-size-photo/2025/78b23806-b2f3-429d-9397-0f9607a6fedd.png (8560826) has deleted/unused inode 25600201.  Clear<y>? yes
+Entry 'a35fafd0-8076-43eb-96ef-eba68cf346b3' in /doi/bhutanese-half-photo/2025/bda8c370-e2fa-11ef-9653-3df530df9fb2.jpg (8560828) has deleted/unused inode 25600202.  Clear<y>? yes
+Entry '6f0f731d-591b-4390-988d-cbe90d57d88c' in /doi/enrollment/78b23806-b2f3-429d-9397-0f9607a6fedd/2025/becbe6b0-e2fa-11ef-993e-9741d258800f.leftFourFingers.png (8560833) has deleted/unused inode 25600204.  Clear<y>? yes
+Entry 'e9d2493b-9dfa-4dd9-8926-0266d770b794' in /doi/enrollment/78b23806-b2f3-429d-9397-0f9607a6fedd/2025/bebea040-e2fa-11ef-993e-9741d258800f.rightFourFingers.png (8560832) has deleted/unused inode 25600203.  Clear<y>? yes
+Entry 'f8298b2d-bd93-4c51-8a0b-9d9ed780cc53' in /doi/enrollment/78b23806-b2f3-429d-9397-0f9607a6fedd/2025/bed53580-e2fa-11ef-993e-9741d258800f.twoThumbs.png (8560834) has deleted/unused inode 25600205.  Clear<y>? yes
+Entry '9cb67987-0d6f-4496-9c95-4273e193abc5' in /doi/adhar-card/2025/d6d4b3e0-e2fa-11ef-a0e8-89c10498be21.pdf (8560839) has deleted/unused inode 25600207.  Clear<y>?
+/dev/rbd0: e2fsck canceled.
+
+
+Entry '9cb67987-0d6f-4496-9c95-4273e193abc5' in /doi/adhar-card/2025/d6d4b3e0-e2fa-11ef-a0e8-89c10498be21.pdf (8560839) has deleted/unused inode 25600207.  Clear? yes
+
+
+
+Entry '80caf593-5b9a-4adb-9bd5-b6942060e659' in ??? (23970124) is a link to directory /doi/bhutanese-half-photo/2025/1d95e980-e2fa-11ef-b344-81fc969e2d0a.jpg/80caf593-5b9a-4adb-9bd5-b6942060e659 (25600176).
+Clear? yes
+
+Entry 'xl.meta' in ??? (23970124) has deleted/unused inode 23873790.  Clear? yes
+
+Entry 'xl.meta' in /doi/draft-applicants/passport-attachment/2025/fe1e2fe0-e2f9-11ef-ad49-1bd6c86feb9e.PNG (8560757) has deleted/unused inode 23873782.  Clear? yes
+
+Entry 'xl.meta' in /doi/draft-applicants/passport-attachment/2025/0402d2d0-e2fa-11ef-91a2-7fe383bf4f76.jpg (8560758) has deleted/unused inode 23873783.  Clear? yes
+
+Entry 'xl.meta' in /doi/voter-card/2025/088351e0-e2fa-11ef-b1bf-59fcfa2f7706.pdf (8560759) has deleted/unused inode 23873784.  Clear? yes
+
+Entry 'xl.meta' in /doi/draft-applicants/passport-size-photo/2025/0f7434b0-e2fa-11ef-ad49-1bd6c86feb9e.jpeg (8560760) has deleted/unused inode 23873786.  Clear? yes
+
+Entry 'xl.meta' in /doi/passport-size-photo/2025/74673b79-568c-4990-89d6-4ccf282e1447.jpeg (8560761) has deleted/unused inode 23873787.  Clear? yes
+
+Entry 'xl.meta' in /doi/passport-size-photo/2025/71f9341d-81d6-41f3-90ce-35187da68195.jpeg (8560762) has deleted/unused inode 23873788.  Clear? yes
+
+Invalid inode number for '.' in directory inode 25600179.
+Fix? yes
+
+Entry '194ca25b-e14d-4c3c-af00-f2eefdc962dc' in /doi/bhutanese-half-photo/2025/9b6ba840-e2fa-11ef-b344-81fc969e2d0a.jpg (8560820) has deleted/unused inode 25600199.  Clear? yes
+
+Entry '61356158-62aa-4071-b675-658f46fab1ca' in /doi/voter-card/2025/b8662ce0-e2fa-11ef-a0e8-89c10498be21.pdf (8560825) has deleted/unused inode 25600200.  Clear? yes
+
+Entry '9aad65b8-4654-482e-9049-70e2508daa34' in /doi/voter-card/2025/d6bc49e0-e2fa-11ef-9c3b-e5d7ec534421.pdf (8560838) has deleted/unused inode 25600206.  Clear? yes
+
+Entry 'f4fdf4cf-085f-48c7-8161-dadb2a1351fc' in /doi/bhutanese-half-photo/2025/e4a78560-e2fa-11ef-9653-3df530df9fb2.jpg (8560843) has deleted/unused inode 25600208.  Clear? yes
+
+Problem in HTREE directory inode 63185136 (/doi/voter-card/2025): bad block number 220.
+Clear HTree index? yes
+
+Entry '05ccd4d0-da30-11ef-b85b-c3fecd16fb90.png' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/05ccd4d0-da30-11ef-b85b-c3fecd16fb90.png (6906091).
+Clear? yes
+
+Entry 'd764c7b0-d3cc-11ef-844d-e7f7ce74c5f9.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/d764c7b0-d3cc-11ef-844d-e7f7ce74c5f9.jpg (5791830).
+Clear? yes
+
+Entry '5c2b34fa-6a04-4f22-ba47-1df7a8dc0db5passport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/5c2b34fa-6a04-4f22-ba47-1df7a8dc0db5passport_photo.jpeg (4628716).
+Clear? yes
+
+Entry '070c8ab0-ce51-11ef-8ebe-1db08c7f67a6.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/070c8ab0-ce51-11ef-8ebe-1db08c7f67a6.jpg (4808881).
+Clear? yes
+
+Entry 'c768dbaf-8c80-431a-80ef-9b65f2e4fbc9.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/c768dbaf-8c80-431a-80ef-9b65f2e4fbc9.jpeg (7889055).
+Clear? yes
+
+Entry '04e63010-d045-11ef-ac29-45949699d072.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/04e63010-d045-11ef-ac29-45949699d072.jpeg (5201929).
+Clear? yes
+
+Entry '24e23e50-c815-11ef-b06b-1b9bfacd3155.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/24e23e50-c815-11ef-b06b-1b9bfacd3155.jpeg (3866669).
+Clear? yes
+
+Entry '828afed0-d3ea-11ef-9956-154cb97d68c9.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/828afed0-d3ea-11ef-9956-154cb97d68c9.jpg (5832744).
+Clear? yes
+
+Entry '9af430ca-c2ab-488e-9424-7f815ab0c3b0passport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/9af430ca-c2ab-488e-9424-7f815ab0c3b0passport_photo.jpeg (4300861).
+Clear? yes
+
+Entry '1c12a930-dc89-11ef-a350-d1c483284318.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/1c12a930-dc89-11ef-a350-d1c483284318.jpg (7299194).
+Clear? yes
+
+Entry '839a2c20-c6c9-11ef-ab28-53265126fe01.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/839a2c20-c6c9-11ef-ab28-53265126fe01.jpeg (6332699).
+Clear? yes
+
+Entry 'b585ba50-cce2-11ef-ad57-e9ef76f33275.JPG' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/b585ba50-cce2-11ef-ad57-e9ef76f33275.JPG (4595740).
+Clear? yes
+
+Entry 'a6a0c35f-7125-4f83-a100-757590ec3a74.png' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/a6a0c35f-7125-4f83-a100-757590ec3a74.png (8413370).
+Clear? yes
+
+Entry '6904d3a2-1713-4a43-bb37-03cad092f571.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/6904d3a2-1713-4a43-bb37-03cad092f571.jpeg (8175855).
+Clear? yes
+
+Entry '5aa2f490-dccd-11ef-b9dc-f999aade8442.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/5aa2f490-dccd-11ef-b9dc-f999aade8442.jpg (4219204).
+Clear? yes
+
+Entry '686dae30-dc69-11ef-bb9f-8b8f0814d652.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/686dae30-dc69-11ef-bb9f-8b8f0814d652.jpg (7233782).
+Clear? yes
+
+Entry '0e1e7d16-93b3-4df5-9dd5-f7901e0f164c.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/0e1e7d16-93b3-4df5-9dd5-f7901e0f164c.jpeg (7364707).
+Clear? yes
+
+Entry 'f38eb942-66dd-4714-baee-005c4e5a436d.png' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/f38eb942-66dd-4714-baee-005c4e5a436d.png (8405112).
+Clear? yes
+
+Entry '3eb6bd10-de09-11ef-b9dc-f999aade8442.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/3eb6bd10-de09-11ef-b9dc-f999aade8442.jpg (5783864).
+Clear? yes
+
+Entry '497b9e5c-bc9e-49fe-b0af-7c974e46830a.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/497b9e5c-bc9e-49fe-b0af-7c974e46830a.jpeg (8208620).
+Clear? yes
+
+Entry '5ec7a370-d487-11ef-b6f6-3d163e980769.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/5ec7a370-d487-11ef-b6f6-3d163e980769.jpeg (5890216).
+Clear? yes
+
+Entry 'a2864db2-fafe-4f8c-83fb-2a91670bddfa.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/a2864db2-fafe-4f8c-83fb-2a91670bddfa.jpeg (8118480).
+Clear? yes
+
+Entry 'f9de7bcf-aaa4-4849-9e1a-7a1eec3d27f8passport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/f9de7bcf-aaa4-4849-9e1a-7a1eec3d27f8passport_photo.jpeg (3989808).
+Clear? yes
+
+Entry 'f4203837-3504-44a6-bac2-2729b5a820fa.png' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/f4203837-3504-44a6-bac2-2729b5a820fa.png (6078789).
+Clear? yes
+
+Entry 'fbaa15fe-d085-48d8-a971-605d50ea78abpassport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/fbaa15fe-d085-48d8-a971-605d50ea78abpassport_photo.jpeg (6570226).
+Clear? yes
+
+Entry 'f782dcb0-d7ac-11ef-9830-4f0e47d1ae2b.jpg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/f782dcb0-d7ac-11ef-9830-4f0e47d1ae2b.jpg (6447194).
+Clear? yes
+
+Entry '2873f7a7-9c42-4ca3-a5a6-8c5ef8668b70.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/2873f7a7-9c42-4ca3-a5a6-8c5ef8668b70.jpeg (6111554).
+Clear? yes
+
+Entry 'cad5f731-2f7b-437f-94cd-90038bd972b0passport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/cad5f731-2f7b-437f-94cd-90038bd972b0passport_photo.jpeg (5775452).
+Clear? yes
+
+Entry 'a9adabac-6fa6-4bea-92cf-00bc518dd650.png' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/a9adabac-6fa6-4bea-92cf-00bc518dd650.png (8101889).
+Clear? yes
+
+Entry 'f58cfae4-7c3f-42ed-b6b2-5d3fd6bbb1bepassport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/f58cfae4-7c3f-42ed-b6b2-5d3fd6bbb1bepassport_photo.jpeg (4186244).
+Clear? yes
+
+Entry 'a1f0faa0-d178-11ef-a381-adb7a159b930.JPG' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/a1f0faa0-d178-11ef-a381-adb7a159b930.JPG (7299347).
+Clear? yes
+
+Entry '2c2d4534-8a54-45f4-b8fc-c392e0ac802apassport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/2c2d4534-8a54-45f4-b8fc-c392e0ac802apassport_photo.jpeg (7315661).
+Clear? yes
+
+Entry '9208fb00-d89a-11ef-b85b-c3fecd16fb90.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/9208fb00-d89a-11ef-b85b-c3fecd16fb90.jpeg (6725672).
+Clear? yes
+
+Entry '9dae80f0-d323-11ef-ad02-39be01ae927d.png' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/9dae80f0-d323-11ef-ad02-39be01ae927d.png (5693627).
+Clear? yes
+
+Entry '6741b6a9-73ac-4323-b9ea-4797676c64a0passport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/6741b6a9-73ac-4323-b9ea-4797676c64a0passport_photo.jpeg (5095603).
+Clear? yes
+
+Entry '27042863-e893-49db-94d1-967d02b75dfapassport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/27042863-e893-49db-94d1-967d02b75dfapassport_photo.jpeg (3981586).
+Clear? yes
+
+Entry '213d05b7-be88-4c58-be27-13087120c9b6passport_photo.jpeg' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/213d05b7-be88-4c58-be27-13087120c9b6passport_photo.jpeg (5693742).
+Clear? yes
+
+Entry 'd682d970-e2f1-11ef-ad49-1bd6c86feb9e.png' in /doi/passport-size-photo/2025 (3727408) is a link to directory /doi/passport-size-photo/2025/d682d970-e2f1-11ef-ad49-1bd6c86feb9e.png (8544554).
+Clear? yes
+
+
+Entry '5111aef0-e310-11ef-84a7-415774bb2389.jpg' in /doi/draft-applicants/passport-attachment/2025 (3719407) has deleted/unused inode 8552781.  Clear? yes
+
+'..' in /doi/enrollment/ec7f3458-ae80-42d7-a990-5a984bc9ebc0/2025/5a505350-e305-11ef-993e-9741d258800f.twoThumbs.png/34eb3fb1-e576-48b1-8a1c-7b68ada4cfa2 (23970124) is /doi/bhutanese-half-photo/2025 (3719312), should be /doi/enrollment/ec7f3458-ae80-42d7-a990-5a984bc9ebc0/2025/5a505350-e305-11ef-993e-9741d258800f.twoThumbs.png (65610061).
+Fix? yes
+
+U
+'..' in /lost+found/#8560858/b11dd38c-77be-48da-9aaa-a4030b1e9908 (25600179) is /doi/casual-visitor/half-photo/2025 (3719316), should be /lost+found/#8560858 (8560858).
+Fix? yes
+
+'..' in /doi/enrollment/3937a9e6-d211-419f-913b-105e30b2fc59/2025/0daffa00-e2fb-11ef-993e-9741d258800f.rightFourFingers.png/2ae44558-336c-461c-ac56-8c2c9eec3096 (25600180) is /doi/passport-size-photo/2025 (3727408), should be /doi/enrollment/3937a9e6-d211-419f-913b-105e30b2fc59/2025/0daffa00-e2fb-11ef-993e-9741d258800f.rightFourFingers.png (8560861).
+Fix? yes
+/dev/rbd0: ***** FILE SYSTEM WAS MODIFIED *****

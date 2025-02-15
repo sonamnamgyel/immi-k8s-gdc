@@ -1,0 +1,58 @@
+# Add kubernetes-dashboard repository
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+
+# Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+
+
+helm upgrade kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard -f values.yaml
+
+
+
+kubectl -n kubernetes-dashboard create token admin-user --duration=43200s
+
+kubectl -n kubernetes-dashboard create token developer-sa --duration=31536000s
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ5ZjRvUWxCTDZmZzVZOVBacEJMeHA4UHRiSGV2ZXdBTjlUdy00NDRMNDQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmRvaS5sb2NhbCJdLCJleHAiOjE3NDY1NDMwNjUsImlhdCI6MTcxNTAwNzA2NSwiaXNzIjoiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmRvaS5sb2NhbCIsImt1YmVybmV0ZXMuaW8iOnsibmFtZXNwYWNlIjoia3ViZXJuZXRlcy1kYXNoYm9hcmQiLCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGV2ZWxvcGVyLXNhIiwidWlkIjoiY2I2MmY4MmUtM2RjMS00ZDdkLWI0MTItOTU4MWYyYzNlMmIxIn19LCJuYmYiOjE3MTUwMDcwNjUsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDpkZXZlbG9wZXItc2EifQ.eDDYhRoWzflRfwICuM4nLH0FQemDzToTKKKPLHGADDNwprkD9wqaJvWIvlOrAVF8dhiq15SHDWTkqZ--qesmwCiVNzUMK2guKfHyt7pGAimQwxCKr3V4v3yYxQ5Mpj6KugAGs9rqHArWst5bL4GZKj-P3g5hHmBuOlZ3jc5fHHLrCcsKyyxcjTvlWomUOw9SPcKGiVKK25feWn06kkpbyVsHch4dLMRzKo2GoFPBeojIpqF8-9tgkwfEOZwFNf8oiSeKWVj0zzKjcVnJFHXPWZ0sbH5TyWJ9Qg5YR5_BMpnV_cA0-RIkxuvbqqoILQw-f5MDU56u5Gr-JzrscZBITQ
+
+
+
+NAME: kubernetes-dashboard
+LAST DEPLOYED: Mon Apr  8 19:33:58 2024
+NAMESPACE: kubernetes-dashboard
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+*************************************************************************************************
+*** PLEASE BE PATIENT: Kubernetes Dashboard may need a few minutes to get up and become ready ***
+*************************************************************************************************
+
+Congratulations! You have just installed Kubernetes Dashboard in your cluster.
+
+To access Dashboard run:
+
+  kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8000:443
+
+NOTE: In case port-forward command does not work, make sure that kong service name is correct.
+      Check the services in Kubernetes Dashboard namespace using:
+        kubectl -n kubernetes-dashboard get svc
+
+Dashboard will be available at:
+  https://localhost:8443
+
+
+#
+# Create Admin User
+k apply -f admin-user.yaml
+
+
+# Generate long-lived Bearer Token for ServiceAccount
+k apply -f token.yaml
+
+# Get TOKEN
+kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
+kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ5ZjRvUWxCTDZmZzVZOVBacEJMeHA4UHRiSGV2ZXdBTjlUdy00NDRMNDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIxNzQ0M2MwZC1jZmNkLTQxMWEtOTczNS1hNzAxZDJmMGE4MjMiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZXJuZXRlcy1kYXNoYm9hcmQ6YWRtaW4tdXNlciJ9.nPAi2IdqebQFyvU-bVLjzkjlKzgVF1DRo8kyVIvqVW4BTMB85fYMt7JdfByo_q23rVD5lYR2pcwxf77j4pv_XxSXSnH8nQViXcQmskRMHSvSOTHGDTuiAxTg4MMqmCH9JyAL_xeXVuZMGdjVBURd_-ByiWu742lw02BOfF8IWhqVWpvnPQG9akJJg6h2SDHvpf4QYJuQhFX5wB7QAIkh8sO-l_l-5UREof21S4SBdCjK0eP57NJJR-D5UNxAo7LuLf50mTrhVdosg58y7B-2WnE_KOeYOLKBRyIgA4ZKI34XcNSiMGrDGN2Ko8jcIPo7nX2FVaCQg87AyVAx1ijJhQ
+

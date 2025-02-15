@@ -1,0 +1,102 @@
+CREATE DATABASE dev_admin_auth_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-admin-auth'@'%' IDENTIFIED BY 'DEVaUp!JGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_admin_auth_db.* TO 'dev-admin-auth'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_client_auth_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-client-auth'@'%' IDENTIFIED BY 'DEVCCUp!JGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_client_auth_db.* TO 'dev-client-auth'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_common_data_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-common-data'@'%' IDENTIFIED BY 'DEVCDataUp!JGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_common_data_db.* TO 'dev-common-data'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_pii_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-pii'@'%' IDENTIFIED BY 'DEVPIIUp!JGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_pii_db.* TO 'dev-pii'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_tourist_visa_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-tourist-visa'@'%' IDENTIFIED BY 'DEVTouristViUp!JGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_tourist_visa_db.* TO 'dev-tourist-visa'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_watchlist_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-watchlist'@'%' IDENTIFIED BY 'DEVWatchlist$Up!JGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_watchlist_db.* TO 'dev-watchlist'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_payment_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-payment'@'%' IDENTIFIED BY 'DEVP@yment$Up!JGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_payment_db.* TO 'dev-payment'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE hesk_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'hesk'@'%' IDENTIFIED BY 'JjWwty42QivL8CVd0tdW';
+GRANT ALL PRIVILEGES ON hesk_db.* TO 'hesk'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_bms_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-bms'@'%' IDENTIFIED BY 'DEVj7HSw0BrLkyJhos';
+GRANT ALL PRIVILEGES ON dev_bms_db.* TO 'dev-bms'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_non_tourist_visa_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-non-tourist-visa'@'%' IDENTIFIED BY 'DEVNonTVisa$Up!HGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_non_tourist_visa_db.* TO 'dev-non-tourist-visa'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_casual_visitor_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-casual-visitor'@'%' IDENTIFIED BY 'DEVC@$U<$Up!HGFLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_casual_visitor_db.* TO 'dev-casual-visitor'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_report_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-report'@'%' IDENTIFIED BY 'DEVR3P0$T@$Up!HGLrRwk#7';
+GRANT ALL PRIVILEGES ON dev_report_db.* TO 'dev-report'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE admin_hesk_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'admin-hesk'@'%' IDENTIFIED BY 'AdjWwty42QivL8CVd0SdW2024';
+GRANT ALL PRIVILEGES ON admin_hesk_db.* TO 'admin-hesk'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_visa_on_arrival_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-visa-on-arrival'@'%' IDENTIFIED BY 'GFz1crhvK&d2gx311Imm';
+GRANT ALL PRIVILEGES ON dev_visa_on_arrival_db.* TO 'dev-visa-on-arrival'@'%';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_route_permit_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-route-permit'@'%' IDENTIFIED BY 'DEVrS2y3D1jjgZtuBwoPZL#';
+GRANT ALL PRIVILEGES ON dev_route_permit_db.* TO 'dev-route-permit'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_permit_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-permit'@'%' IDENTIFIED BY 'M2cVEBLE6MzPpDuaN8oL';
+GRANT ALL PRIVILEGES ON dev_permit_db.* TO 'dev-permit'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_enrollment_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-enrollment'@'%' IDENTIFIED BY 'JigGywEGFTo18BOngbxD';
+GRANT ALL PRIVILEGES ON dev_enrollment_db.* TO 'dev-enrollment'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_offence_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-offence'@'%' IDENTIFIED BY 'kUx6wAFlBgzNU9FlbTg3';
+GRANT ALL PRIVILEGES ON dev_offence_db.* TO 'dev-offence'@'%';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dev_foreign_worker_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-foreign-worker'@'%' IDENTIFIED BY 'cDzWUN6EsNgI6JgOsC5m';
+GRANT ALL PRIVILEGES ON dev_foreign_worker_db.* TO 'dev-foreign-worker'@'%';
+FLUSH PRIVILEGES;

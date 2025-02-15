@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mon.immi.gov.bt
+  namespace: elastic-stack
+spec:
+  secretName: cert-mon.immi.gov.bt
+  dnsNames:
+  - mon.immi.gov.bt
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

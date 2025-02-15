@@ -1,0 +1,117 @@
+helm repo add rook-release https://charts.rook.io/release
+helm show values rook-release/rook-ceph-cluster > cluster-values.ori.yaml
+
+kubectl label nodes kw{1..12} role=storage-node
+kubectl label nodes kw{13..15} role=storage-node
+kubectl label nodes kw{10..12} storage=high-capacity
+kubectl label nodes kw{13..15} storage=high-capacity
+
+
+kubectl label nodes kw7 role-
+
+helm install --create-namespace --namespace rook-ceph rook-ceph-cluster \
+   --set operatorNamespace=rook-ceph rook-release/rook-ceph-cluster -f cluster-values.yaml
+
+ceph osd crush set-device-class ssd-high-capacity osd.2 osd.5 osd.8
+
+helm upgrade --create-namespace --namespace rook-ceph rook-ceph-cluster \
+   --set operatorNamespace=rook-ceph rook-release/rook-ceph-cluster -f cluster-values.yaml
+
+kubectl --namespace rook-ceph get cephcluster
+
+
+kubectl -n rook-ceph get service
+
+kubectl -n rook-ceph port-forward svc/rook-ceph-mgr-dashboard 6443:8443
+kubectl -n rook-ceph port-forward svc/rook-ceph-mgr-dashboard 7000:7000
+localhost:7000
+
+kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+
+ceph mgr module enable rook
+ceph orch set backend rook
+
+# DELETE CEPH POOL (DO AT YOUR OWN RISK)
+ceph tell mon.* injectargs --mon_allow_pool_delete true
+ceph osd pool delete ceph-blockpool1 ceph-blockpool1 --yes-i-really-really-mean-it
+
+ceph osd pool delete ceph-objectstore.rgw.buckets.data ceph-objectstore.rgw.buckets.data --yes-i-really-really-mean-it
+ceph osd pool delete ceph-objectstore.rgw.buckets.index ceph-objectstore.rgw.buckets.index --yes-i-really-really-mean-it
+ceph osd pool delete ceph-objectstore.rgw.buckets.non-ec ceph-objectstore.rgw.buckets.non-ec --yes-i-really-really-mean-it
+ceph osd pool delete ceph-objectstore.rgw.meta ceph-objectstore.rgw.meta --yes-i-really-really-mean-it
+ceph osd pool delete ceph-objectstore.rgw.otp ceph-objectstore.rgw.otp --yes-i-really-really-mean-it
+ceph osd pool delete ceph-objectstore.rgw.control ceph-objectstore.rgw.control --yes-i-really-really-mean-it
+ceph osd pool delete ceph-objectstore.rgw.log ceph-objectstore.rgw.log --yes-i-really-really-mean-it
+ceph osd pool delete ceph-objectstore.rgw.log ceph-objectstore.rgw.log --yes-i-really-really-mean-it
+ceph osd pool delete .rgw.root .rgw.root --yes-i-really-really-mean-it
+
+
+kubectl delete cephobjectstore ceph-objectstore -n rook-ceph
+kubectl get cephobjectstores.ceph.rook.io ceph-objectstore -o json | jq '.metadata.finalizers = null' | kubectl apply -f -
+
+########
+
+NAME: rook-ceph-cluster
+LAST DEPLOYED: Tue Apr  9 20:56:23 2024
+NAMESPACE: rook-ceph
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+The Ceph Cluster has been installed. Check its status by running:
+  kubectl --namespace rook-ceph get cephcluster
+
+Visit https://rook.io/docs/rook/latest/CRDs/ceph-cluster-crd/ for more information about the Ceph CRD.
+
+Important Notes:
+- You can only deploy a single cluster per namespace
+- If you wish to delete this cluster and start fresh, you will also have to wipe the OSD disks using `sfdisk`
+
+
+
+
+Username:
+doi
+
+Access key:
+RAKBQDX052N0HSVD68GK
+
+Secret key:
+J57rQm38joiLymBPF8gGT6UPnbsQslDN16QB6Jxk
+
+    - name: MINIO_ROOT_USER
+      value: RAKBQDX052N0HSVD68GK
+    - name: MINIO_ROOT_PASSWORD
+      value: J57rQm38joiLymBPF8gGT6UPnbsQslDN16QB6Jxk
+    
+
+# DEV
+
+mc alias set rook https://s3.doi.gov.bt TI9FT5SPQJG8EZDS81QA TjxloOg1sCS8dRAhzOy9a2PrJc2mFSCnTK23z12e
+
+mc alias set rook https://s3.doi.gov.bt TI9FT5SPQJG8EZDS81QA TjxloOg1sCS8dRAhzOy9a2PrJc2mFSCnTK23z12e
+
+
+# PROD
+
+mc alias set rook https://s3.doi.gov.bt RSSD8SLIHZ2B4WB1VAWD vFUH3uxKKPBRUqF4BHDhdZjBRrPU8JoVPOL1pWoY
+
+
+
+
+mc alias set ALIAS HOSTNAME ACCESS_KEY SECRET_KEY
+mc ls rook
+
+
+mc ls rook/test
+
+
+
+
+
+kubectl get volumeattachment pvc-c3ee3178-885a-470d-a0b0-a7a54abde8a1
+
+
+
+# CLEAN UP STORAGE CS
+rbd -p ceph-blockpool2-minio rm ceph-blockpool2-minio

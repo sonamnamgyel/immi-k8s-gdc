@@ -1,0 +1,108 @@
+#
+# Enable IPv6
+
+ansible doi-k8s -m shell -a "cat /etc/default/grub | grep ipv6.disable=1"
+ansible-playbook k8s-install/grub.yaml
+
+ansible doi-all -m shell -a "rm -rf /etc/cron.daily/aide"
+ansible doi-all -m shell -a "systemctl restart cron"
+
+
+#
+# DISABLE SWAP on all K8s nodes
+ansible doi-new-kworkers -m shell -a "swapon --show"
+ansible doi-new-kworkers -m shell -a "swapoff -a"
+ansible doi-new-kworkers -m shell -a "rm /swap.img"
+ansible-playbook k8s-install/comment-swap.yaml
+ansible-playbook k8s-install/repo.yaml
+ansible-playbook k8s-install/containerd.yaml
+ansible doi-new-kworkers -m shell -a "systemctl is-enabled containerd"
+
+# CONTROL PLANE
+ansible doi-kmasters -m shell -a "systemctl enable kubelet"
+ansible doi-kmasters -m shell -a "kubeadm config images pull"
+
+#
+# Enable Modules
+ansible doi-k8s -m shell -a "sysctl -a | grep bridge"
+ansible doi-k8s -m shell -a "sysctl -a | grep overlay"
+
+
+ansible doi-k8s -m shell -a "swapon --show"
+ansible doi-k8s -m shell -a "swapoff -a"
+
+# MASTER NODE 1
+#
+
+kubeadm init \
+  --upload-certs \
+  --control-plane-endpoint=k8s-api.doi.gov.bt \
+  --apiserver-cert-extra-sans=k8s-api.doi.cloudbhutan.com,103.252.84.33,172.30.91.5 \
+  --service-dns-domain=doi.local \
+  --pod-network-cidr=10.0.0.0/16
+
+
+##
+##
+--pod-network-cidr=10.0.0.0/16
+--service-cidr=10.96.0.0/12
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of the control-plane node running the following command on each as root:
+
+  kubeadm join k8s-api.doi.gov.bt:6443 --token dsihck.tvbxgb1bj51kaqp4 \
+  --discovery-token-ca-cert-hash sha256:147c8f25b390e2cb83a1efcb3b5a64ab90a593022ad53ca10c1bccb736b2e290 \
+  --control-plane --certificate-key 67a5723aa6de839d985762b76e005a0e88b9f9349553426bf2f03776bcc6cf9b
+
+Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
+As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use
+"kubeadm init phase upload-certs --upload-certs" to reload certs afterward.
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join k8s-api.doi.gov.bt:6443 --token dsihck.tvbxgb1bj51kaqp4 \
+  --discovery-token-ca-cert-hash sha256:147c8f25b390e2cb83a1efcb3b5a64ab90a593022ad53ca10c1bccb736b2e290
+
+
+
+#
+# JOIN WORKER NODES ON EXISTING CLUSTER
+#
+kubeadm token create --print-join-command
+
+kubeadm join k8s-api.doi.gov.bt:6443 --token fw6ob3.btrmvzqc9lha8s62 --discovery-token-ca-cert-hash sha256:147c8f25b390e2cb83a1efcb3b5a64ab90a593022ad53ca10c1bccb736b2e290
+
+
+
+# UFW
+ansible-playbook k8s-install/ufw-reset.yaml
+ansible-playbook k8s-install/ufw-control-pane.yaml
+ansible-playbook k8s-install/ufw-workers.yaml
+
+# CONTROL PLANE
+ufw allow 6443/tcp
+ufw allow 2379:2380/tcp
+ufw allow 10250/tcp
+ufw allow 10259/tcp
+ufw allow 10257/tcp
+
+# WORKER NODES
+ufw allow 10250/tcp
+ufw allow 30000:32767/tcp
+
+ufw status

@@ -1,0 +1,62 @@
+kubectl apply -f deploy/crd.yaml
+
+kubectl create namespace pxc
+
+
+kubectl apply -f deploy/rbac.yaml -n pxc
+
+kubectl apply -f deploy/operator.yaml -n pxc
+
+kubectl create -f deploy/secrets.yaml -n pxc
+
+kubectl apply -f deploy/cr.yaml -n pxc
+kubectl delete -f deploy/cr.yaml -n pxc
+
+
+
+kubectl run mysql-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mysql:8.0.30-debian-11-r1 --namespace pxc --command -- mysql -h rds-pxc.pxc -uroot -p"9Ys6UET3zKnvJD3nwG"
+
+kubectl run mysql-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mysql:8.0.30-debian-11-r1 --namespace pxc bash
+
+#
+# MYSQL DUMP
+#
+kubectl run mysql-client --rm --tty -i --pod-running-timeout=5m --restart='Never' --namespace pxc --image docker.io/bitnami/mysql:8.0.30-debian-11-r1 --command \
+  -- mysqldump -h rds-pxc.pxc -uroot -p"9Ys6UET3zKnvJD3nwG" personal_information_db > personal_information_db.sql
+
+
+#
+# MYSQL IMPORT
+#
+kubectl run mysql-client --rm --tty -i --pod-running-timeout=5m --restart='Never' --namespace pxc --image docker.io/bitnami/mysql:8.0.30-debian-11-r1 --command \
+  -- mysql -h rds-pxc.pxc -uroot -p"9Ys6UET3zKnvJD3nwG" personal_information_db < personal_information_db.sql
+
+kubectl run mysql-client --rm -i --restart='Never' --namespace pxc \
+	--image docker.io/bitnami/mysql:8.0.30-debian-11-r1 --command \
+  	-- mysql -h rds-pxc.pxc -P 3306 -uroot -p"9Ys6UET3zKnvJD3nwG" \
+  	personal_information_db < PISDB.sql
+
+kubectl run mysql-client --rm -i --restart='Never' --namespace pxc \
+	--image docker.io/bitnami/mysql:8.0.30-debian-11-r1 --command \
+  	-- sh -c 'gzip -dc common_data_db.sql.gz | mysql -h rds-pxc.pxc -uroot -p"9Ys6UET3zKnvJD3nwG" common_data_db'
+
+
+
+mysql -h rds-haproxy-replicas.pxc -u root -p"9Ys6UET3zKnvJD3nwG"
+
+
+
+
+
+sonam
+fqi9i*i6JwChhiVT
+
+
+tshewang
+*(KhwnGoGJLe5yI-
+
+hana
+W6IU7cBZQ4rsfXB/
+
+
+
