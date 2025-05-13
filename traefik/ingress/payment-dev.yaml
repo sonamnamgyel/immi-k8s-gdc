@@ -1,11 +1,11 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: dev
+  name: dev-payment-cloudbhutan
   namespace: dev
 spec:
   entryPoints:
-    - webs
+    - websecure
   routes:
     - match: Host(`doi-stripe-webhook.cloudbhutan.com`) && PathPrefix(`/svc/payment-aggregator`)
       kind: Rule
