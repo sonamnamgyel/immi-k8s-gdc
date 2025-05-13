@@ -1,1 +1,33 @@
 103.252.84.33  k8s-api.doi.gov.bt
+
+
+#
+# ZONE doi.gov.bt
+#
+# immi.doi.gov.bt
+
+immi	IN	A 	157.10.140.57
+		IN	A 	157.10.140.58
+
+######################################
+
+#
+# ZONE immi.gov.bt
+#
+# immi.gov.bt
+# www.immi.gov.bt
+# api.immi.gov.bt
+# bms.immi.gov.bt
+
+
+@ 	IN 	A 	157.10.140.57
+
+www IN 	A 	157.10.140.57
+
+api IN 	A 	157.10.140.58
+ 	IN 	A 	157.10.140.57
+
+bms IN 	A 	157.10.140.57
+ 	IN 	A 	157.10.140.58
+
+######################################

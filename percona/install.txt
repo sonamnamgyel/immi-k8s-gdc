@@ -9,10 +9,15 @@ kubectl apply -f deploy/operator.yaml -n pxc
 
 kubectl create -f deploy/secrets.yaml -n pxc
 
+kubectl create configmap rds-pxc --from-file=my.cnf -n pxc
+
+#
+# Change IMAGE PULL POLICY
+#
 kubectl apply -f deploy/cr.yaml -n pxc
 kubectl delete -f deploy/cr.yaml -n pxc
 
-
+kubectl run mysql-client --rm --tty -i --restart='Never' --image  registry.ped.immi.gov.bt/d/bitnami/mysql:8.0.30-debian-11-r1 --namespace pxc --command -- mysql -h rds-pxc.pxc -uroot -p"9Ys6UET3zKnvJD3nwG"
 
 kubectl run mysql-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mysql:8.0.30-debian-11-r1 --namespace pxc --command -- mysql -h rds-pxc.pxc -uroot -p"9Ys6UET3zKnvJD3nwG"
 

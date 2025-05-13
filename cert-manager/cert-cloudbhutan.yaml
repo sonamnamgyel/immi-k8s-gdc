@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cloudbhutan.com
+  namespace: dev
+spec:
+  secretName: cert-cloudbhutan.com
+  dnsNames:
+  - doi-stripe-webhook.cloudbhutan.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

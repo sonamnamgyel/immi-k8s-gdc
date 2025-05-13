@@ -100,3 +100,9 @@ CREATE DATABASE dev_foreign_worker_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unic
 CREATE USER 'dev-foreign-worker'@'%' IDENTIFIED BY 'cDzWUN6EsNgI6JgOsC5m';
 GRANT ALL PRIVILEGES ON dev_foreign_worker_db.* TO 'dev-foreign-worker'@'%';
 FLUSH PRIVILEGES;
+
+
+CREATE DATABASE dev_on_arrival_preregistration_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'dev-on-arrival-preregistration'@'%' IDENTIFIED BY 'TzSuIQumrPLUJ9xJTA0Q';
+GRANT ALL PRIVILEGES ON dev_on_arrival_preregistration_db.* TO 'dev-on-arrival-preregistration'@'%';
+FLUSH PRIVILEGES;

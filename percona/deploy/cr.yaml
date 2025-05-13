@@ -50,6 +50,8 @@ spec:
     size: 3
     image: percona/percona-xtradb-cluster:8.0.35-27.1
     autoRecovery: true
+    imagePullPolicy: IfNotPresent
+
 #    expose:
 #      enabled: true
 #      type: LoadBalancer
@@ -193,7 +195,7 @@ spec:
     enabled: true
     size: 3
     image: percona/percona-xtradb-cluster-operator:1.14.0-haproxy
-#    imagePullPolicy: Always
+    imagePullPolicy: IfNotPresent
 #    schedulerName: mycustom-scheduler
 #    readinessDelaySec: 15
 #    livenessDelaySec: 600
@@ -530,6 +532,7 @@ spec:
   logcollector:
     enabled: true
     image: percona/percona-xtradb-cluster-operator:1.14.0-logcollector
+    imagePullPolicy: IfNotPresent
 #    configuration: |
 #      [OUTPUT]
 #           Name  es
@@ -558,6 +561,7 @@ spec:
   backup:
 #    allowParallel: true
     image: percona/percona-xtradb-cluster-operator:1.14.0-pxc8.0-backup-pxb8.0.35
+    imagePullPolicy: IfNotPresent
 #    backoffLimit: 6
 #    serviceAccountName: percona-xtradb-cluster-operator
 #    imagePullSecrets:

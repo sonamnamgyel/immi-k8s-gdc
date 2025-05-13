@@ -46,7 +46,7 @@ spec:
         - name: DISABLE_TELEMETRY
           value: "false"
         image: percona/percona-xtradb-cluster-operator:1.14.0
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
           httpGet:

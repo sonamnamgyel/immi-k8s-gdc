@@ -110,6 +110,11 @@ spec:
       services:
         - name: foreign-worker
           port: 3000
+    - match: Host(`dev-api-ims.doi.gov.bt`) && PathPrefix(`/svc/preregistration`)
+      kind: Rule
+      services:
+        - name: on-arrival-preregistration
+          port: 3000
   tls:
     secretName: cert-dev.doi.gov.bt
   

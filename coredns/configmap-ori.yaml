@@ -1,0 +1,52 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: coredns
+  namespace: kube-system
+  uid: b577a6ce-ec36-4bfb-baf6-90a063f6c722
+  resourceVersion: '67923776'
+  creationTimestamp: '2024-04-04T16:03:20Z'
+  managedFields:
+    - manager: kubeadm
+      operation: Update
+      apiVersion: v1
+      time: '2024-04-04T16:03:20Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data: {}
+    - manager: dashboard-api
+      operation: Update
+      apiVersion: v1
+      time: '2024-09-02T06:03:45Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data:
+          f:Corefile: {}
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health {
+           lameduck 5s
+        }
+        ready
+        kubernetes doi.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+        
+        prometheus :9153
+        forward . /etc/resolv.conf {
+           max_concurrent 1000
+        }
+        cache 30
+        loop
+        reload
+        loadbalance
+    }
+    gov.bt:53 {
+      errors
+      cache 30
+      forward . 172.30.1.10
+    }

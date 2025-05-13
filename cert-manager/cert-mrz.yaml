@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: mon.immi.gov.bt
-  namespace: elastic-stack
+  name: mrz.ped.immi.gov.bt
+  namespace: prod
 spec:
-  secretName: cert-mon.immi.gov.bt
+  secretName: cert-mrz.ped.immi.gov.bt
   dnsNames:
-  - mon.immi.gov.bt
+  - mrz.ped.immi.gov.bt
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
